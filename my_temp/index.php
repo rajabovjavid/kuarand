@@ -49,7 +49,7 @@ session_start();
 
                         <div class="header_extra d-flex flex-row align-items-center justify-content-start ml-auto">
                             <?php if (!isset($_SESSION['email'])) { ?>
-                                <div class="book_button trans_200"><a href="signin.php">Sign In/Up</a></div>
+                                <div class="book_button trans_200"><a href="views/signin.php">Sign In/Up</a></div>
                             <?php } else { ?>
                                 <div class="book_button trans_200"><a href="">Hesabım</a></div>
                                 <div class="book_button trans_200"><a href="actions/user_actions/signout_action.php">Sign Out</a></div>

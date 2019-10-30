@@ -12,7 +12,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- Custom Theme files -->
-<link href="css/signup_style.css" rel="stylesheet" type="text/css" media="all" />
+<link href="../css/signup_style.css" rel="stylesheet" type="text/css" media="all" />
 <!-- //Custom Theme files -->
 <!-- web font -->
 <link href="//fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i" rel="stylesheet">
@@ -21,17 +21,25 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <body>
 	<!-- main -->
 	<div class="main-w3layouts wrapper">
-    <h1>Creative SignUp Form</h1>
-    
+		<h1>Creative SignUp Form</h1>
 		<div class="main-agileinfo">
+			<button><a href="../index.php">Back To Home</a></button>
 			<div class="agileits-top">
-        <button><a href="index.php">Back To Home</a></button>
-				<form action="actions/user_actions/signin_action.php" method="post">
+				<form action="../actions/user_actions/signup_action.php" method="post">
+					<input class="text" type="text" name="username" placeholder="Username" required="">
 					<input class="text email" type="email" name="email" placeholder="Email" required="">
-					<input class="text" type="password" name="password" placeholder="Password" required="">					
-					<input type="submit" value="SIGN IN">
+					<input class="text" type="password" name="passwordone" placeholder="Password" required="">
+					<input class="text w3lpass" type="password" name="passwordtwo" placeholder="Confirm Password" required="">
+					<div class="wthree-text">
+						<label class="anim">
+							<input type="checkbox" class="checkbox" required="">
+							<span>I Agree To The Terms & Conditions</span>
+						</label>
+						<div class="clear"> </div>
+					</div>
+					<input type="submit" value="SIGNUP">
 				</form>
-				<p>Don't have an Account? <a href="signup.php"> Sign Up!</a></p>
+				<p>Already have an Account? <a href="signin.php"> Login Now!</a></p>
 			</div>
 		</div>
 		<!-- copyright -->
