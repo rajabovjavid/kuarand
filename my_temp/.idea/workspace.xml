@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8aac688d-61be-420c-8222-0d92890ba3ed" name="Default Changelist" comment="" />
+    <list default="true" id="8aac688d-61be-420c-8222-0d92890ba3ed" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/actions/hairdresser_action/create_heardresser_action.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/views/hairdresser_views/create_hairdresser.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/signin_style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/css/signup_style.css" beforeDir="false" afterPath="$PROJECT_DIR$/styles/signup_style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/signin.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/user_views/signin.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/signup.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/user_views/signup.php" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -13,8 +22,12 @@
       <executable />
     </execution>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP" />
   <component name="ProjectId" id="1Sqw4fZ02yL7ySLwTrehhlv5UPB" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -25,6 +38,12 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/styles" />
+      <recent name="$PROJECT_DIR$/views/user_views" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -50,10 +69,26 @@
       <updated>1572304243861</updated>
       <workItem from="1572304245256" duration="2542000" />
       <workItem from="1572389338647" duration="3263000" />
+      <workItem from="1572439580791" duration="105000" />
+      <workItem from="1572471895046" duration="2008000" />
+      <workItem from="1572503778600" duration="556000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

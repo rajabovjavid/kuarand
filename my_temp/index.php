@@ -21,6 +21,7 @@ session_start();
     <link href="plugins/colorbox/colorbox.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="styles/main_styles.css">
     <link rel="stylesheet" type="text/css" href="styles/responsive.css">
+    <link rel="stylesheet" type="text/css" href="styles/dropdown_menu.css">
 </head>
 <body>
 
@@ -33,14 +34,14 @@ session_start();
                 <div class="col">
                     <div class="header_content d-flex flex-row align-items-center justify-content-start">
                         <div class="logo">
-                            <a href="#">
+                            <a href="index.php">
                                 <div>KuaRandevu</div>
                                 <div>Sıralarda zaman kaybetmeyin</div>
                             </a>
                         </div>
                         <nav class="main_nav">
                             <ul class="d-flex flex-row align-items-center justify-content-start">
-                                <li class="active"><a href="index.html">Anasayfa</a></li>
+                                <li class="active"><a href="index.php">Anasayfa</a></li>
                                 <li><a href="">Salonlar</a></li>
                                 <li><a href="">Hakkımızda</a></li>
                                 <li><a href="">İletişim</a></li>
@@ -49,10 +50,16 @@ session_start();
 
                         <div class="header_extra d-flex flex-row align-items-center justify-content-start ml-auto">
                             <?php if (!isset($_SESSION['email'])) { ?>
-                                <div class="book_button trans_200"><a href="views/signin.php">Sign In/Up</a></div>
+                                <div class="book_button trans_200"><a href="views/user_views/signin.php">Sign In/Up</a></div>
                             <?php } else { ?>
-                                <div class="book_button trans_200"><a href="">Hesabım</a></div>
-                                <div class="book_button trans_200"><a href="actions/user_actions/signout_action.php">Sign Out</a></div>
+                                <div class="dropdown">
+                                    <button class="dropbtn">Hesabım</button>
+                                    <div class="dropdown-content">
+                                        <a href="#">Bilgilerim</a>
+                                        <a href="#">Randevularım</a>
+                                        <a href="actions/user_actions/signout_action.php">Sign Out</a>
+                                    </div>
+                                </div>
                             <?php } ?>
                         </div>
                         <div class="hamburger ml-auto"><i class="fa fa-bars" aria-hidden="true"></i></div>
@@ -61,6 +68,127 @@ session_start();
             </div>
         </div>
     </header>
+
+    <!-- Menu -->
+
+    <!--<div class="menu">
+        <div class="background_image" style="background-image:url(images/menu.jpg)"></div>
+        <div class="menu_content d-flex flex-column align-items-center justify-content-center">
+            <ul class="menu_nav_list text-center">
+                <li><a href="index.php">Anasayfa</a></li>
+                <li><a href="">Salonlar</a></li>
+                <li><a href="">Hakkımızda</a></li>
+                <li><a href="">İletişim</a></li>
+            </ul>
+            <div class="menu_review"><a href="views/user_views/signin.php">Sign In/Up</a></div>
+        </div>
+    </div>-->
+
+    <!-- Home -->
+
+    <div class="home">
+        <div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="images/hairdresser.jpg" data-speed="0.8"></div>
+        <div class="home_container">
+            <div class="container">
+                <div class="row">
+                    <div class="col">
+                        <div class="home_content text-center">
+                            <div class="home_title"><h1>Luxury & Compfort</h1></div>
+                            <div class="home_text">In vitae nisi aliquam, scelerisque leo a, volutpat sem. Vivamus rutrum dui fermentum eros hendrerit, id lobortis leo volutpat. Maecenas sollicitudin est in libero pretium interdum.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="search_box">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <div class="search_box_container d-flex flex-row align-items-center justify-content-start">
+                                <div class="search_form_container">
+                                    <form action="#" id="search_form" class="search_form">
+                                        <div class="d-flex flex-lg-row flex-column align-items-center justify-content-start">
+                                            <ul class="search_form_list d-flex flex-row align-items-center justify-content-start flex-wrap">
+                                                <li class="search_dropdown d-flex flex-row align-items-center justify-content-start">
+                                                    <span>Check in</span>
+                                                    <i class="fa fa-chevron-down ml-auto" aria-hidden="true"></i>
+                                                    <ul>
+                                                        <li>Check in item 1</li>
+                                                        <li>Check in item 2</li>
+                                                        <li>Check in item 3</li>
+                                                        <li>Check in item 4</li>
+                                                        <li>Check in item 5</li>
+                                                    </ul>
+                                                </li>
+                                                <li class="search_dropdown d-flex flex-row align-items-center justify-content-start">
+                                                    <span>Check out</span>
+                                                    <i class="fa fa-chevron-down ml-auto" aria-hidden="true"></i>
+                                                    <ul>
+                                                        <li>Check out item 1</li>
+                                                        <li>Check out item 2</li>
+                                                        <li>Check out item 3</li>
+                                                        <li>Check out item 4</li>
+                                                        <li>Check out item 5</li>
+                                                    </ul>
+                                                </li>
+                                                <li class="search_dropdown d-flex flex-row align-items-center justify-content-start">
+                                                    <span>Guests</span>
+                                                    <i class="fa fa-chevron-down ml-auto" aria-hidden="true"></i>
+                                                    <ul>
+                                                        <li>1</li>
+                                                        <li>2</li>
+                                                        <li>3</li>
+                                                        <li>4</li>
+                                                        <li>5</li>
+                                                    </ul>
+                                                </li>
+                                                <li class="search_dropdown d-flex flex-row align-items-center justify-content-start">
+                                                    <span>Children</span>
+                                                    <i class="fa fa-chevron-down ml-auto" aria-hidden="true"></i>
+                                                    <ul>
+                                                        <li>1</li>
+                                                        <li>2</li>
+                                                        <li>3</li>
+                                                        <li>4</li>
+                                                        <li>5</li>
+                                                    </ul>
+                                                </li>
+                                                <li class="search_dropdown d-flex flex-row align-items-center justify-content-start">
+                                                    <span>Rooms</span>
+                                                    <i class="fa fa-chevron-down ml-auto" aria-hidden="true"></i>
+                                                    <ul>
+                                                        <li>1</li>
+                                                        <li>2</li>
+                                                        <li>3</li>
+                                                        <li>4</li>
+                                                        <li>5</li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                            <button class="search_button">search</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="footer_content d-flex flex-md-row flex-column align-items-center align-items-start justify-content-start">
+                        <div class="copyright"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
 
 </div>
 

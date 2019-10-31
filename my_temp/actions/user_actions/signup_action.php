@@ -56,17 +56,17 @@ if ($passwordone == $passwordtwo) {
 
             if ($insert) {
 
-                header("Location:../../signin.php?durum=ok");
+                header("Location:../../views/user_views/signin.php?durum=ok");
 
             } else {
 
-                header("Location:../../signup.php?durum=notok");
+                header("Location:../../views/user_views/signup.php?durum=notok");
 
             }
 
         } else {
 
-            header("Location:../../signup.php?durum=used_email");
+            header("Location:../../views/user_views/signup.php?durum=used_email");
 
         }
 
@@ -76,8 +76,8 @@ if ($passwordone == $passwordtwo) {
 
     }
     else {
-        header("Location:../../signup.php?durum=eksiksifre");
+        header("Location:../../views/user_views/signup.php?durum=eksiksifre");
     }
 } else {
-    header("Location:../../signup.php?durum=farklisifre");
+    header("Location:../../views/user_views/signup.php?durum=farklisifre");
 }
