@@ -10,7 +10,7 @@ $password = md5(trim($_POST['password']));
 
 
 
-$user_query = $db->prepare("select * from users where email=:email and  yetki=:yetki and  password=:password" );
+$user_query = $db->prepare("select * from customer where email=:email and  yetki=:yetki and  password=:password" );
 
 $user_query->execute(array(
     'email' => $email,

@@ -6,15 +6,11 @@ session_start();
 include '../db.php';
 
 
-echo $username = htmlspecialchars($_POST['username']);
-echo "<br>";
-echo $email = htmlspecialchars($_POST['email']);
-echo "<br>";
+$username = htmlspecialchars($_POST['username']);
+$email = htmlspecialchars($_POST['email']);
 
-echo $passwordone = trim($_POST['passwordone']);
-echo "<br>";
-echo $passwordtwo = trim($_POST['passwordtwo']);
-echo "<br>";
+$passwordone = trim($_POST['passwordone']);
+$passwordtwo = trim($_POST['passwordtwo']);
 
 
 if ($passwordone == $passwordtwo) {
@@ -24,7 +20,7 @@ if ($passwordone == $passwordtwo) {
 
         // Başlangıç
 
-        $user_query = $db->prepare("select * from users where email=:mail");
+        $user_query = $db->prepare("select * from customer where email=:mail");
         $user_query->execute(array(
             'mail' => $email
         ));
@@ -38,20 +34,20 @@ if ($passwordone == $passwordtwo) {
             //md5 fonksiyonu şifreyi md5 şifreli hale getirir.
             $password = md5($passwordone);
 
-            $yetki = 1;
+            $auth = 1;
 
             //Kullanıcı kayıt işlemi yapılıyor...
-            $user_save = $db->prepare("INSERT INTO users SET
+            $user_save = $db->prepare("INSERT INTO customer SET
 					username=:username,
 					email=:email,
 					password=:password,
-					yetki=:yetki
+					auth=:auth
 					");
             $insert = $user_save->execute(array(
                 'username' => $username,
                 'email' => $email,
                 'password' => $password,
-                'yetki' => $yetki
+                'auth' => $auth
             ));
 
             if ($insert) {

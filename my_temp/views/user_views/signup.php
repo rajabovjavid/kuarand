@@ -25,6 +25,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		<div class="main-agileinfo">
 			<button><a href="../../index.php">Back To Home</a></button>
 			<div class="agileits-top">
+
 				<form action="../../actions/user_actions/signup_action.php" method="post">
 					<input class="text" type="text" name="username" placeholder="Username" required="">
 					<input class="text email" type="email" name="email" placeholder="Email" required="">
@@ -39,6 +40,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					</div>
 					<input type="submit" value="SIGNUP">
 				</form>
+
+
 				<p>Already have an Account? <a href="signin.php"> Login Now!</a></p>
                 <p>If you are a hairdresser <a href="../hairdresser_views/create_hairdresser.php"> Click Here</a></p>
 			</div>
