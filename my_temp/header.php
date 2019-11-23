@@ -22,7 +22,7 @@
                             <?php if($comes_from_page == "list_hairdressers") { ?>
                             <li class="active"><a href="">Salonlar</a></li>
                             <?php } else { ?>
-                            <li><a href="views/hairdresser_views/list_hairdressers.php">Salonlar</a></li>
+                            <li><a href="views/list_hairdressers.php">Salonlar</a></li>
                             <?php } ?>
 
                             <li><a href="">Hakkımızda</a></li>
@@ -39,7 +39,7 @@
                                 <div class="dropdown-content">
                                     <a href="#">Bilgilerim</a>
                                     <a href="#">Randevularım</a>
-                                    <a href="actions/user_actions/signout_action.php">Sign Out</a>
+                                    <a href=<?php echo $signout_url ?>>Sign Out</a>
                                 </div>
                             </div>
                         <?php } ?>

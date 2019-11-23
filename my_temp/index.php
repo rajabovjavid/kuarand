@@ -30,8 +30,10 @@ session_start();
 
     <?php
     $comes_from_page = "index";
-    $sign_url = "views/user_views/signin.php";
+    $sign_url = "views/signin.php";
+    $signout_url = "actions/customer_actions/signout_action.php";
     include "header.php";
+    #include "actions/customer_actions/signout_action.php"
     ?>
 
     <!-- Menu -->
