@@ -9,11 +9,18 @@ include '../db.php';
 $hdName = htmlspecialchars($_POST['hairdresser_name']);
 $hdEmail = htmlspecialchars($_POST['email']);
 
-$hdAddress = htmlspecialchars($_POST['hairdresser_address']);
+$hdContact = new stdClass();
+$hdContact->hdEmail = $hdEmail;
+
+$hdAddress = new stdClass();
+$hdAddress->hdAddressCity = htmlspecialchars($_POST['address_city']);
+$hdAddress->hdAddressRegion = htmlspecialchars($_POST['address_region']);
+$hdAddress->hdAddressNeigh = htmlspecialchars($_POST['address_neigh']);
+$hdAddress->hdAddressStreet = htmlspecialchars($_POST['address_street']);
+$hdAddress->hdAddressOther = htmlspecialchars($_POST['address_other']);
+
 
 $hdType = $_POST['type'];
-
-$sehir = $_POST['sehir'];
 
 $passwordone = trim($_POST['passwordone']);
 $passwordtwo = trim($_POST['passwordtwo']);
@@ -26,7 +33,7 @@ if ($passwordone == $passwordtwo) {
 
         // Başlangıç
 
-        $hd_query = $db->prepare("select * from hairdressers where email=:mail");
+        $hd_query = $db->prepare("select * from Hairdresser where hdEmail=:mail");
         $hd_query->execute(array(
             'mail' => $hdEmail
         ));
@@ -34,51 +41,44 @@ if ($passwordone == $passwordtwo) {
         //dönen satır sayısını belirtir
         $say1 = $hd_query->rowCount();
 
-        $user_query = $db->prepare("select * from users where email=:mail");
-        $user_query->execute(array(
-            'mail' => $hdEmail
-        ));
-
-        //dönen satır sayısını belirtir
-        $say2 = $user_query->rowCount();
-
-
-        if ($say1+$say2 == 0) {
+        if ($say1 == 0) {
 
             //md5 fonksiyonu şifreyi md5 şifreli hale getirir.
             $password = md5($passwordone);
 
             //Kullanıcı kayıt işlemi yapılıyor...
-            $hd_save = $db->prepare("INSERT INTO hairdressers SET
+            $hd_save = $db->prepare("INSERT INTO Hairdresser SET
 					hdName=:hdName,
-					hdAddress=:address,
 					hdEmail=:mail,
 					hdPassword=:password,
-					hdType=:hdType,
-					sehir=:sehir
+					hdType=:hdType
 					");
             $insert = $hd_save->execute(array(
                 'hdName' => $hdName,
-                'address' => $hdAddress,
                 'mail' => $hdEmail,
                 'password' => $password,
-                'hdType' => $hdType,
-                'sehir' => $sehir
+                'hdType' => $hdType
             ));
 
+
+
+            /*$log_file = fopen("log.txt", "w") or die("Unable to open file!");
+            fwrite($log_file, $insert);
+            fclose($log_file);*/
+
             if ($insert) {
-                header("Location:../../views/user_views/signin.php?durum=ok");
-
-            } else {
-
-                header("Location:../../views/hairdresser_views/create_hairdresser.php?durum=notok");
-
+                $hdAddress->hdId = $db->lastInsertId();
+                header("Location:add_hdAddress_action.php?hdAddress=".json_encode($hdAddress));
+                //header("Location:add_hdContact_action.php?hdContact=$hdContact");
+                header("Location:../../views/signin.php?durum=ok");
+            }
+            else {
+                header("Location:../../views/create_hairdresser.php?durum=notok");
             }
 
-        } else {
-
-            header("Location:../../views/hairdresser_views/create_hairdresser.php?durum=used_email");
-
+        }
+        else {
+            header("Location:../../views/create_hairdresser.php?durum=used_email");
         }
 
 
@@ -87,8 +87,9 @@ if ($passwordone == $passwordtwo) {
 
     }
     else {
-        header("Location:../../views/hairdresser_views/create_hairdresser.php?durum=eksiksifre");
+        header("Location:../../views/create_hairdresser.php?durum=eksiksifre");
     }
-} else {
-    header("Location:../../views/hairdresser_views/create_hairdresser.php?durum=farklisifre");
+}
+else {
+    header("Location:../../views/create_hairdresser.php?durum=farklisifre");
 }
