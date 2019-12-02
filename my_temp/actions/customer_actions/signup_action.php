@@ -45,21 +45,17 @@ if ($passwordone == $passwordtwo) {
                 'email' => $email,
                 'password' => $password
             ));
-
+            write_to_file("log.txt", $insert);
             if ($insert) {
-
                 header("Location:../../views/signin.php?durum=ok");
-
-            } else {
-
+            }
+            else {
                 header("Location:../../views/signup.php?durum=notok");
-
             }
 
-        } else {
-
+        }
+        else {
             header("Location:../../views/signup.php?durum=used_email");
-
         }
 
 

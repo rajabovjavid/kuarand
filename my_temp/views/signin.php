@@ -26,9 +26,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		<div class="main-agileinfo">
 			<div class="agileits-top">
         <button><a href="../index.php">Back To Home</a></button>
-				<form action="../actions/customer_actions/signin_action.php" method="post">
-					<input class="text email" type="email" name="email" placeholder="Email" required="">
-					<input class="text" type="password" name="password" placeholder="Password" required="">					
+				<form action="../api_routes/customer/signin_cus_route.php" method="post">
+					<input class="text email" type="email" name="cus_email" placeholder="Email" required="">
+					<input class="text" type="password" name="cus_password" placeholder="Password" required="">
 					<input type="submit" name="user_signin" value="SIGN IN">
 				</form>
 				<p>Don't have an Account? <a href="signup.php"> Sign Up!</a></p>

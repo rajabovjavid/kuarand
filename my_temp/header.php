@@ -1,3 +1,17 @@
+<?php
+ob_start();
+session_start();
+
+if(isset($_SESSION["email"])){
+    include "api_routes/curl_api.php";
+
+    $get_data = callAPI('GET', 'http://localhost/rest_api_slim/public/api/customer/getName/'.$_SESSION["email"], false);
+    $response = json_decode($get_data, true);
+    $customer_name = $response["data"];
+}
+
+?>
+
 <!-- Header -->
 <header class="header">
     <div class="container">
@@ -35,7 +49,7 @@
                             <div class="book_button trans_200"><a href=<?php echo $sign_url ?>>Sign In/Up</a></div>
                         <?php } else { ?>
                             <div class="dropdown">
-                                <button class="dropbtn">Hesabım</button>
+                                <button class="dropbtn"><?php echo $customer_name?></button>
                                 <div class="dropdown-content">
                                     <a href="#">Bilgilerim</a>
                                     <a href="#">Randevularım</a>

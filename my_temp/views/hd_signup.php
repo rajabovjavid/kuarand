@@ -25,12 +25,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <div class="main-agileinfo">
         <button><a href="../index.php">Back To Home</a></button>
         <div class="agileits-top">
-            <form action="../actions/hairdresser_action/create_hairdresser_action.php" method="post">
-                <input class="text" type="text" name="hairdresser_name" placeholder="Hairdersser Name" required="">
-                <input class="text email" type="email" name="email" placeholder="Email" required="">
+            <form action="../api_routes/hairdresser/signup_hd_route.php" method="post">
+                <input class="text" type="text" name="hd_name" placeholder="Hairdersser Name" required="">
+                <input class="text email" type="email" name="hd_email" placeholder="Email" required="">
                 <br>
-                <input class="text" type="password" name="passwordone" placeholder="Password" required="">
-                <input class="text w3lpass" type="password" name="passwordtwo" placeholder="Confirm Password" required="">
+                <input class="text" type="password" name="hd_password" placeholder="Password" required="">
+                <input class="text w3lpass" type="password" name="hd_password_confirm" placeholder="Confirm Password" required="">
 
                 <input class="text" type="text" name="address_city" placeholder="Address City" required="">
                 <input class="text" type="text" name="address_region" placeholder="Address Region" required="">
@@ -40,7 +40,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
                 <br><br>
 
-                <select name="type" required>
+                <select name="hd_type" required>
                     <option value="0">Kuaför</option>
                     <option value="1">Berber</option>
                 </select>

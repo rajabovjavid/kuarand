@@ -73,12 +73,12 @@ if ($passwordone == $passwordtwo) {
                 header("Location:../../views/signin.php?durum=ok");
             }
             else {
-                header("Location:../../views/create_hairdresser.php?durum=notok");
+                header("Location:../../views/hd_signup.php?durum=notok");
             }
 
         }
         else {
-            header("Location:../../views/create_hairdresser.php?durum=used_email");
+            header("Location:../../views/hd_signup.php?durum=used_email");
         }
 
 
@@ -87,9 +87,9 @@ if ($passwordone == $passwordtwo) {
 
     }
     else {
-        header("Location:../../views/create_hairdresser.php?durum=eksiksifre");
+        header("Location:../../views/hd_signup.php?durum=eksiksifre");
     }
 }
 else {
-    header("Location:../../views/create_hairdresser.php?durum=farklisifre");
+    header("Location:../../views/hd_signup.php?durum=farklisifre");
 }

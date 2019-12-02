@@ -26,11 +26,11 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			<button><a href="../index.php">Back To Home</a></button>
 			<div class="agileits-top">
 
-				<form action="../actions/customer_actions/signup_action.php" method="post">
-					<input class="text" type="text" name="username" placeholder="Username" required="">
-					<input class="text email" type="email" name="email" placeholder="Email" required="">
-					<input class="text" type="password" name="passwordone" placeholder="Password" required="">
-					<input class="text w3lpass" type="password" name="passwordtwo" placeholder="Confirm Password" required="">
+				<form action="../api_routes/customer/signup_cus_route.php" method="post">
+					<input class="text" type="text" name="cus_name" placeholder="Name" required="">
+					<input class="text email" type="email" name="cus_email" placeholder="Email" required="">
+					<input class="text" type="password" name="cus_password" placeholder="Password" required="">
+					<input class="text w3lpass" type="password" name="cus_password_confirm" placeholder="Confirm Password" required="">
 					<div class="wthree-text">
 						<label class="anim">
 							<input type="checkbox" class="checkbox" required="">
@@ -43,7 +43,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 
 				<p>Already have an Account? <a href="signin.php"> Login Now!</a></p>
-                <p>If you are a hairdresser <a href="create_hairdresser.php"> Click Here</a></p>
+                <p>If you are a hairdresser <a href="hd_signup.php"> Click Here</a></p>
 			</div>
 		</div>
 		<!-- copyright -->

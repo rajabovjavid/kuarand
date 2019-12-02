@@ -8,10 +8,6 @@ include '../db.php';
 $email = htmlspecialchars($_POST['email']);
 $password = md5(trim($_POST['password']));
 
-$log_file = fopen("log.txt", "w") or die("Unable to open file!");
-fwrite($log_file, $email." ".$password);
-fclose($log_file);
-
 $customer_query = $db->prepare("select * from Customer where customerEmail=:email and  customerPassword=:password" );
 
 $customer_query->execute(array(
@@ -24,6 +20,8 @@ $say1 = $customer_query->rowCount();
 if ($say1 == 1) {
 
     $_SESSION['email'] = $email;
+
+    write_to_file("log.txt",$_SESSION['email']);
 
     header("Location:../../index.php");
     exit;
@@ -56,3 +54,9 @@ else {
         header("Location:../../views/signin.php?durum=basarisizgiris");
     }
 }*/
+
+function write_to_file($file, $text){
+    $log_file = fopen($file, "w") or die("Unable to open file!");
+    fwrite($log_file, $text);
+    fclose($log_file);
+}
