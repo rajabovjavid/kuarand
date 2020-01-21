@@ -14,7 +14,7 @@ $data_array = array(
     "address_other" => $_POST['address_other'],
 );
 
-$make_call = callAPI('POST', 'http://localhost/rest_api_slim/public/api/hairdresser/signup', json_encode($data_array));
+$make_call = callAPI('POST', 'http://localhost/rest_api_slim/public/api/panel_routes/signup', json_encode($data_array));
 $response = json_decode($make_call, true);
 $message = $response["message"];
 $status = $response["status"];

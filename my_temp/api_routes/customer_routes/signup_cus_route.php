@@ -9,7 +9,7 @@ $data_array = array(
     "cus_password" => $_POST['cus_password']
 );
 
-$make_call = callAPI('POST', 'http://localhost/rest_api_slim/public/api/customer/signup', json_encode($data_array));
+$make_call = callAPI('POST', 'http://localhost/rest_api_slim/public/api/customer_routes/signup', json_encode($data_array));
 $response = json_decode($make_call, true);
 $message = $response["message"];
 $status = $response["status"];

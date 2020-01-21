@@ -26,7 +26,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 			<button><a href="../index.php">Back To Home</a></button>
 			<div class="agileits-top">
 
-				<form action="../api_routes/customer/signup_cus_route.php" method="post">
+				<form action="../api_routes/customer_routes/signup_cus_route.php" method="post">
 					<input class="text" type="text" name="cus_name" placeholder="Name" required="">
 					<input class="text email" type="email" name="cus_email" placeholder="Email" required="">
 					<input class="text" type="password" name="cus_password" placeholder="Password" required="">

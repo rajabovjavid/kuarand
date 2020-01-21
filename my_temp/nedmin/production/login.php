@@ -1,90 +1,95 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <!-- Meta, title, CSS, favicons, etc. -->
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Joy Akademi CMS Yönetim Paneli Eğitim Sürümü </title>
+    <title>Joy Akademi CMS Yönetim Paneli Eğitim Sürümü </title>
 
-  <!-- Bootstrap -->
-  <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Font Awesome -->
-  <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
-  <!-- NProgress -->
-  <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
-  <!-- Animate.css -->
-  <link href="../vendors/animate.css/animate.min.css" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="../vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- Animate.css -->
+    <link href="../vendors/animate.css/animate.min.css" rel="stylesheet">
 
-  <!-- Custom Theme Style -->
-  <link href="../build/css/custom.min.css" rel="stylesheet">
+    <!-- Custom Theme Style -->
+    <link href="../build/css/custom.min.css" rel="stylesheet">
 </head>
 
-<body  class="login">
-  <div>
+<body class="login">
+<div>
     <a class="hiddenanchor" id="signup"></a>
     <a class="hiddenanchor" id="signin"></a>
 
     <div class="login_wrapper">
-      <div class="animate form login_form">
-        <section class="login_content">
-         
-
-          <form action="../netting/islem.php" method="POST">
+        <div class="animate form login_form">
+            <section class="login_content">
 
 
-            <h1>Yönetim Paneli </h1>
-            
-            <div>
-              <input type="text" name="kullanici_mail" class="form-control" placeholder="Kullanıcı Adınız (Mail)" required="" />
-            </div>
-            <div>
-              <input type="password" name="kullanici_password" class="form-control" placeholder="Şifreniz" required="" />
-            </div>
-            <div>
-            <button style="width: 100%; background-color: #73879C; color:white;" type="submit" name="admingiris" class="btn btn-default"> Giriş Yap</button>
-              
-            </div>
+                <form action="../../api_routes/panel_routes/signin_route.php" method="POST">
 
-            <div class="clearfix"></div>
+                    <h1>Panel Giriş</h1>
 
-            <div class="separator">
-              <p class="change_link">
+                    <div>
+                        <input type="text" name="email" class="form-control"
+                               placeholder="Kullanıcı Adınız (Mail)" required=""/>
+                    </div>
+                    <div>
+                        <input type="password" name="password" class="form-control" placeholder="Şifreniz"
+                               required=""/>
+                    </div>
+                    <br>
+                    <div>
+                        <select name="panel_type" required>
+                            <option value="0">Admin</option>
+                            <option value="1">Kuaför</option>
+                        </select>
+                    </div>
+                    <br>
+                    <div>
+                        <button style="width: 100%; background-color: #73879C; color:white;" type="submit"
+                                name="admingiris" class="btn btn-default"> Giriş Yap
+                        </button>
+                    </div>
 
-             <?php 
+                    <div class="clearfix"></div>
 
-             if ($_GET['durum']=="no") {
-             
-             echo "Kullanıcı Bulunamadı...";
+                    <div class="separator">
+                        <p class="change_link">
 
-             } elseif ($_GET['durum']=="exit") {
-             
-             echo "Başarıyla Çıkış Yaptınız.";
+                            <?php
+                            if ($_GET['durum'] == "no") {
+                                echo "Kullanıcı Bulunamadı...";
+                            } elseif ($_GET['durum'] == "exit") {
+                                echo "Başarıyla Çıkış Yaptınız.";
+                            }
+                            ?>
 
-             }
+                        </p>
 
-             ?>
-               
-              </p>
+                        <div class="clearfix"></div>
+                        <br/>
 
-              <div class="clearfix"></div>
-              <br />
-
-              <div>
-                <h1><i class="fa fa-paw"></i> Joy Akademi</h1>
-                <p>©2017 Joy Akademi Eğitim Sürümü</p>
-              </div>
-            </div>
-          </form>
-
+                        <div>
+                            <h1><i class="fa fa-paw"></i> Joy Akademi</h1>
+                            <p>©2017 Joy Akademi Eğitim Sürümü</p>
+                        </div>
+                    </div>
+                </form>
 
 
-        </section>
-      </div>
+            </section>
+        </div>
 
     </div>
-  </div>
+</div>
 </body>
 </html>

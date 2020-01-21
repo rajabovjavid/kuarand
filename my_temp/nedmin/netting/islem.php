@@ -300,19 +300,13 @@ if (isset($_POST['admingiris'])) {
     echo $say = $kullanicisor->rowCount();
 
     if ($say == 1) {
-
         $_SESSION['kullanici_mail'] = $kullanici_mail;
         header("Location:../production/index.php");
         exit;
-
-
     } else {
-
         header("Location:../production/login.php?durum=no");
         exit;
     }
-
-
 }
 
 

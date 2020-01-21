@@ -10,5 +10,5 @@ $data_address_array = array(
 
 $hd_id = $_POST['hd_id'];
 
-$make_call_address = callAPI('POST', 'http://localhost/rest_api_slim/public/api/hairdresser/add_address/'.$hd_id, json_encode($data_address_array));
+$make_call_address = callAPI('POST', 'http://localhost/rest_api_slim/public/api/panel_routes/add_address/'.$hd_id, json_encode($data_address_array));
 $response_of_address = json_decode($make_call_address, true);
