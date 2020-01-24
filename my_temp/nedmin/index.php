@@ -1,4 +1,3 @@
-<?php 
-
+<?php
 header("Location:production/login.php");
  ?>

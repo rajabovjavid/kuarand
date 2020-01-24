@@ -10,10 +10,11 @@ include "../write_to_file.php";
 
 $panel_type = $_POST["panel_type"];
 
-if($panel_type == "0"){
+if($panel_type == "0"){ // admin girişi
     echo 0;
 }
-elseif ($panel_type == "1"){
+elseif ($panel_type == "1"){ // kuaför girişi
+
     $data_array = array(
         "hd_email" => $_POST['email'],
         "hd_password" => $_POST['password']
@@ -39,6 +40,7 @@ elseif ($panel_type == "1"){
     }
     else {
         $_SESSION['email'] = $response["data"]["hdEmail"];
+        $_SESSION['auth'] = "2"; // hairdresser yetkisi
         apcu_store("message", $message);
         apcu_store("is_panel_user", "1");
         apcu_store("panel_type", "hairdresser");

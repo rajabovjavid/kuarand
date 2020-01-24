@@ -32,7 +32,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					<input type="submit" name="user_signin" value="SIGN IN">
 				</form>
 				<p>Don't have an Account? <a href="signup.php"> Sign Up!</a></p>
-                <p>If you are a hairdresser or admin <a href="../nedmin/index.php"> Click Here</a></p>
+                <p>If you are a hairdresser or admin <a href="../nedmin/production/login.php"> Click Here</a></p>
 			</div>
 		</div>
 		<!-- copyright -->

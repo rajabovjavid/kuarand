@@ -64,7 +64,10 @@
 
                     <div class="separator">
                         <p class="change_link">
-                            <?php echo apcu_fetch("message"); ?>
+                            <?php
+                            echo apcu_fetch("message");
+                            apcu_clear_cache()
+                            ?>
                         </p>
 
                         <div class="clearfix"></div>

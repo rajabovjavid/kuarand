@@ -19,10 +19,16 @@ if (!isset($_SESSION["email"])) {
     exit;
 }
 
-if (apcu_fetch("is_panel_user") != "1") {
-    Header("Location:login.php?durum=izinsiz");
+if (!$_SESSION["auth"]==1 && !$_SESSION["auth"]==2){
+    apcu_store("message", "panel kullanıcısı değilsiniz");
+    Header("Location:login.php");
     exit;
 }
+
+/*if (apcu_fetch("is_panel_user") != "1") {
+    Header("Location:login.php?durum=izinsiz");
+    exit;
+}*/
 
 $user_data = apcu_fetch("user_data");
 
