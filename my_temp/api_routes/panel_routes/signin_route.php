@@ -1,4 +1,8 @@
 <?php
+
+ob_start();
+session_start();
+
 include "../curl_api.php";
 include "../write_to_file.php";
 
@@ -16,21 +20,31 @@ elseif ($panel_type == "1"){
     );
 
 
-    $make_call = callAPI('POST', 'http://localhost:8888/rest_api_slim/public/api/hairdresser/signinHairdresser', json_encode($data_array));
+    $make_call = callAPI('POST', 'http://localhost/rest_api_slim/public/api/hairdresser/signinHairdresser', json_encode($data_array));
     $response = json_decode($make_call, true);
     $message = $response["message"];
     $status = $response["status"];
 
-    write_to_file("log.txt",$status);
+//    write_to_file("log.txt",$status);
 
-    if($status == "error"){
-        header("Location:../../nedmin/production/login.php?message=$message");
+    if($status == null){
+        apc_store("message", "sistem hatası");
+        header("Location:../../nedmin/production/login.php");
         exit;
     }
+    elseif($status == "error"){
+        apc_store("message", $message);
+        header("Location:../../nedmin/production/login.php");
+        exit;
+    }
+    else {
+        $_SESSION['email'] = $response["data"]["hdEmail"];
+        apc_store("message", $message);
+        apc_store("is_panel_user", "1");
+        apc_store("panel_type", "hairdresser");
+        apc_store("user_data", $response["data"]);
+        header("Location:../../nedmin/production/index.php");
+    }
 
-    $_SESSION['email'] = $response["data"]["hdEmail"];
-    apc_store("is_panel_user", "1");
-    apc_store("user_data", $response["data"]);
-    header("Location:../../nedmin/production/index.php?message=$message");
 }
 

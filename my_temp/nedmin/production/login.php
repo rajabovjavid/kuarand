@@ -64,23 +64,14 @@
 
                     <div class="separator">
                         <p class="change_link">
-
-                            <?php
-                            if ($_GET['durum'] == "no") {
-                                echo "Kullanıcı Bulunamadı...";
-                            } elseif ($_GET['durum'] == "exit") {
-                                echo "Başarıyla Çıkış Yaptınız.";
-                            }
-                            ?>
-
+                            <?php echo apc_fetch("message"); ?>
                         </p>
 
                         <div class="clearfix"></div>
                         <br/>
 
                         <div>
-                            <h1><i class="fa fa-paw"></i> Joy Akademi</h1>
-                            <p>©2017 Joy Akademi Eğitim Sürümü</p>
+                            <p>©2020 Kuarand</p>
                         </div>
                     </div>
                 </form>

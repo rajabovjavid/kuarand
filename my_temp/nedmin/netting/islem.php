@@ -297,7 +297,7 @@ if (isset($_POST['admingiris'])) {
         'yetki' => 5
     ));
 
-    echo $say = $kullanicisor->rowCount();
+    $say = $kullanicisor->rowCount();
 
     if ($say == 1) {
         $_SESSION['kullanici_mail'] = $kullanici_mail;
@@ -474,11 +474,11 @@ if (isset($_POST['hakkimizdakaydet'])) {
 
     if ($update) {
 
-        header("Location:../production/hakkimizda.php?durum=ok");
+        header("Location:../production/kuafor_bilgileri.php?durum=ok");
 
     } else {
 
-        header("Location:../production/hakkimizda.php?durum=no");
+        header("Location:../production/kuafor_bilgileri.php?durum=no");
     }
 
 }

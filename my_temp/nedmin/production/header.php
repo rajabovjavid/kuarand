@@ -14,34 +14,19 @@ $ayarcek = $ayarsor->fetch(PDO::FETCH_ASSOC);
 ##################################################################################
 
 
-/*$kullanicisor = $db->prepare("SELECT * FROM kullanici where kullanici_mail=:mail");
-$kullanicisor->execute(array(
-    'mail' => $_SESSION['kullanici_mail']
-));
-$say = $kullanicisor->rowCount();
-$kullanicicek = $kullanicisor->fetch(PDO::FETCH_ASSOC);
-
-if ($say == 0) {
-    Header("Location:login.php?durum=izinsiz");
+if (!isset($_SESSION["email"])) {
+    Header("Location:login.php");
     exit;
-}*/
+}
 
-$is_panel_user = apc_fetch("is_panel_user");
-if ($is_panel_user != "1"){
+if (apc_fetch("is_panel_user") != "1") {
     Header("Location:login.php?durum=izinsiz");
     exit;
 }
 
 $user_data = apc_fetch("user_data");
 
-echo 1;
-//1.Yöntem
-/*
-if (!isset($_SESSION['kullanici_mail'])) {
 
-
-}
-*/
 ?>
 
 <!DOCTYPE html>
@@ -93,7 +78,7 @@ if (!isset($_SESSION['kullanici_mail'])) {
         <div class="col-md-3 left_col">
             <div class="left_col scroll-view">
                 <div class="navbar nav_title" style="border: 0;">
-                    <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Gentelella Alela!</span></a>
+                    <a href="" class="site_title"><i class="fa fa-paw"></i> <span>Kuarand Panel</span></a>
                 </div>
 
                 <div class="clearfix"></div>
@@ -101,11 +86,14 @@ if (!isset($_SESSION['kullanici_mail'])) {
                 <!-- menu profile quick info -->
                 <div class="profile clearfix">
                     <div class="profile_pic">
-                        <img src="images/img.jpg" alt="..." class="img-circle profile_img">
+                        <!--                        <img src="images/img.jpg" alt="..." class="img-circle profile_img">-->
                     </div>
                     <div class="profile_info">
-                        <span>Hoşgeldin</span>
-                        <h2><?php echo $user_data['hdName'] ?></h2>
+                        <?php if (apc_fetch("panel_type") == "admin") { ?>
+                            <h2><?php echo $user_data['adminName'] ?></h2>
+                        <?php } elseif (apc_fetch("panel_type") == "hairdresser") { ?>
+                            <h2><?php echo $user_data['hdName'] ?></h2>
+                        <?php } ?>
                     </div>
                 </div>
                 <!-- /menu profile quick info -->
@@ -117,41 +105,18 @@ if (!isset($_SESSION['kullanici_mail'])) {
                     <div class="menu_section">
                         <h3>General</h3>
                         <ul class="nav side-menu">
-
                             <li><a href="index.php"><i class="fa fa-home"></i> Anasayfa </a></li>
-
-                            <li><a><i class="fa fa-cogs"></i> Site Ayarları <span class="fa fa-cogs"></span></a>
+                            <!--<li><a><i class="fa fa-cogs"></i> Site Ayarları <span class="fa fa-cogs"></span></a>
                                 <ul class="nav child_menu">
                                     <li><a href="genel-ayar.php">Genel Ayarlar</a></li>
                                     <li><a href="iletisim-ayarlar.php">İletişim Ayarlar</a></li>
                                     <li><a href="api-ayarlar.php">Api Ayarlar</a></li>
                                     <li><a href="sosyal-ayar.php">Sosyal Ayarlar</a></li>
-                                    <!--
-
-                                    Facebook
-                                    Twitter
-                                    Youtube
-                                    Google
-
-
-                                  -->
                                     <li><a href="mail-ayar.php">Mail Ayarlar</a></li>
-
-                                    <!--
-
-                                  Smtp Host
-                                  Smtp User
-                                  Smtp Password
-                                  Smtp Port
-
-
-                                -->
-
-
                                 </ul>
-                            </li>
+                            </li>-->
 
-                            <li><a href="hakkimizda.php"><i class="fa fa-info"></i> Hakkımızda </a></li>
+                            <li><a href="kuafor_bilgileri.php"><i class="fa fa-info"></i> Kuaför Bilgileri </a></li>
 
                             <li><a href="kullanici.php"><i class="fa fa-user"></i> Kullanıcılar </a></li>
 
@@ -206,16 +171,8 @@ if (!isset($_SESSION['kullanici_mail'])) {
                         <li class="">
                             <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown"
                                aria-expanded="false">
-                                <img src="images/img.jpg" alt=""><?php echo $kullanicicek['kullanici_adsoyad'] ?>
-                                <span class=" fa fa-angle-down"></span>
-                            </a>
-                            <ul class="dropdown-menu dropdown-usermenu pull-right">
-                                <li><a href="javascript:;"> Profil Bilgilerim</a></li>
-
-
                                 <li><a href="logout.php"><i class="fa fa-sign-out pull-right"></i> Güvenli Çıkış</a>
-                                </li>
-                            </ul>
+                            </a>
                         </li>
 
                         <li role="presentation" class="dropdown">
