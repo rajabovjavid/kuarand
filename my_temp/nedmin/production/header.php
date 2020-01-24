@@ -19,12 +19,12 @@ if (!isset($_SESSION["email"])) {
     exit;
 }
 
-if (apc_fetch("is_panel_user") != "1") {
+if (apcu_fetch("is_panel_user") != "1") {
     Header("Location:login.php?durum=izinsiz");
     exit;
 }
 
-$user_data = apc_fetch("user_data");
+$user_data = apcu_fetch("user_data");
 
 
 ?>
@@ -89,9 +89,9 @@ $user_data = apc_fetch("user_data");
                         <!--                        <img src="images/img.jpg" alt="..." class="img-circle profile_img">-->
                     </div>
                     <div class="profile_info">
-                        <?php if (apc_fetch("panel_type") == "admin") { ?>
+                        <?php if (apcu_fetch("panel_type") == "admin") { ?>
                             <h2><?php echo $user_data['adminName'] ?></h2>
-                        <?php } elseif (apc_fetch("panel_type") == "hairdresser") { ?>
+                        <?php } elseif (apcu_fetch("panel_type") == "hairdresser") { ?>
                             <h2><?php echo $user_data['hdName'] ?></h2>
                         <?php } ?>
                     </div>

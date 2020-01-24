@@ -2,11 +2,11 @@
 ob_start();
 session_start();
 
-if(apc_fetch("panel_type")=="admin"){ // kuaför güncelleme isteği admin tarafından gelmişse
+if(apcu_fetch("panel_type")=="admin"){ // kuaför güncelleme isteği admin tarafından gelmişse
     exit;
 }
-elseif (apc_fetch("panel_type")=="hairdresser"){ // kuaför kendi bilgilerini güncellemek istiyorsa
-    $hd = apc_fetch("user_data");
+elseif (apcu_fetch("panel_type")=="hairdresser"){ // kuaför kendi bilgilerini güncellemek istiyorsa
+    $hd = apcu_fetch("user_data");
 
     $hdName = $_POST["hdName"]; // kuaför ismini formdan alıyoruz
     if($hdName==""){// eğer ismi boş göndermişse, apc'deki ismi kullanıyoruz
@@ -41,19 +41,19 @@ $status = $response["status"];
 $message = $response["message"];
 
 if($status == null) {
-    apc_store("action_status", $status);
-    apc_store("message", "sistem hatası");
+    apcu_store("action_status", $status);
+    apcu_store("message", "sistem hatası");
     header("Location:../../nedmin/production/kuafor_bilgileri.php");
     exit;
 }
 elseif ($status == "error"){
-    apc_store("action_status", $status);
-    apc_store("message", $message);
+    apcu_store("action_status", $status);
+    apcu_store("message", $message);
     header("Location:../../nedmin/production/kuafor_bilgileri.php");
     exit;
 }
 elseif ($status == "ok"){
-    apc_delete("user_data");
+    apcu_delete("user_data");
 
 }
 

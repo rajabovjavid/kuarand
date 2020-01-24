@@ -28,21 +28,21 @@ elseif ($panel_type == "1"){
 //    write_to_file("log.txt",$status);
 
     if($status == null){
-        apc_store("message", "sistem hatası");
+        apcu_store("message", "sistem hatası");
         header("Location:../../nedmin/production/login.php");
         exit;
     }
     elseif($status == "error"){
-        apc_store("message", $message);
+        apcu_store("message", $message);
         header("Location:../../nedmin/production/login.php");
         exit;
     }
     else {
         $_SESSION['email'] = $response["data"]["hdEmail"];
-        apc_store("message", $message);
-        apc_store("is_panel_user", "1");
-        apc_store("panel_type", "hairdresser");
-        apc_store("user_data", $response["data"]);
+        apcu_store("message", $message);
+        apcu_store("is_panel_user", "1");
+        apcu_store("panel_type", "hairdresser");
+        apcu_store("user_data", $response["data"]);
         header("Location:../../nedmin/production/index.php");
     }
 
