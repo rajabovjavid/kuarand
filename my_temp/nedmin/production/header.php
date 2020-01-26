@@ -111,7 +111,7 @@ $user_data = apcu_fetch("user_data");
                     <div class="menu_section">
                         <h3>General</h3>
                         <ul class="nav side-menu">
-                            <li><a href="index.php"><i class="fa fa-home"></i> Anasayfa </a></li>
+                            <li><a href="index.php"><i class="fa fa-home"></i> Main Page </a></li>
                             <!--<li><a><i class="fa fa-cogs"></i> Site Ayarları <span class="fa fa-cogs"></span></a>
                                 <ul class="nav child_menu">
                                     <li><a href="genel-ayar.php">Genel Ayarlar</a></li>
@@ -122,9 +122,9 @@ $user_data = apcu_fetch("user_data");
                                 </ul>
                             </li>-->
 
-                            <li><a href="kuafor_bilgileri.php"><i class="fa fa-info"></i> Kuaför Bilgileri </a></li>
+                            <li><a href="hd_info.php"><i class="fa fa-info"></i> Hairdresser Info </a></li>
 
-                            <li><a href="kullanici.php"><i class="fa fa-user"></i> Kullanıcılar </a></li>
+                            <li><a href="employees.php"><i class="fa fa-user"></i> Employees </a></li>
 
                             <li><a href="urun.php"><i class="fa fa-shopping-basket"></i> Ürünler </a></li>
 
