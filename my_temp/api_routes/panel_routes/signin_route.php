@@ -26,7 +26,6 @@ elseif ($panel_type == "1"){ // kuaför girişi
     $message = $response["message"];
     $status = $response["status"];
 
-//    write_to_file("log.txt",$status);
 
     if($status == null){
         apcu_store("message", "sistem hatası");
