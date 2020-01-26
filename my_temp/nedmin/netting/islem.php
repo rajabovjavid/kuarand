@@ -474,11 +474,11 @@ if (isset($_POST['hakkimizdakaydet'])) {
 
     if ($update) {
 
-        header("Location:../production/kuafor_bilgileri.php?durum=ok");
+        header("Location:../production/hd_info.php?durum=ok");
 
     } else {
 
-        header("Location:../production/kuafor_bilgileri.php?durum=no");
+        header("Location:../production/hd_info.php?durum=no");
     }
 
 }
@@ -503,11 +503,11 @@ if (isset($_POST['kullaniciduzenle'])) {
 
     if ($update) {
 
-        Header("Location:../production/kullanici-duzenle.php?kullanici_id=$kullanici_id&durum=ok");
+        Header("Location:../production/employee_update.php?kullanici_id=$kullanici_id&durum=ok");
 
     } else {
 
-        Header("Location:../production/kullanici-duzenle.php?kullanici_id=$kullanici_id&durum=no");
+        Header("Location:../production/employee_update.php?kullanici_id=$kullanici_id&durum=no");
     }
 
 }
@@ -553,12 +553,12 @@ if ($_GET['kullanicisil'] == "ok") {
     if ($kontrol) {
 
 
-        header("location:../production/kullanici.php?sil=ok");
+        header("location:../production/employees.php?sil=ok");
 
 
     } else {
 
-        header("location:../production/kullanici.php?sil=no");
+        header("location:../production/employees.php?sil=no");
 
     }
 
