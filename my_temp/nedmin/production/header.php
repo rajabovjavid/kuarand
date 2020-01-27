@@ -124,6 +124,8 @@ $user_data = apcu_fetch("user_data");
 
                             <li><a href="hd_info.php"><i class="fa fa-info"></i> Hairdresser Info </a></li>
 
+                            <li><a href="hd_address.php"><i class="fa fa-info"></i> Hairdresser Address </a></li>
+
                             <li><a href="employees.php"><i class="fa fa-user"></i> Employees </a></li>
 
                             <li><a href="urun.php"><i class="fa fa-shopping-basket"></i> Ürünler </a></li>
@@ -138,6 +140,7 @@ $user_data = apcu_fetch("user_data");
 
                             <li><a href="banka.php"><i class="fa fa-bank"></i> Bankalar </a></li>
 
+                            <li><a href="hd_contacts.php"><i class="fa fa-info"></i> Hairdresser Contacts </a></li>
 
                         </ul>
                     </div>
