@@ -61,6 +61,7 @@ $status = $response["status"];
                                 <th>Min Time</th>
                                 <th></th>
                                 <th></th>
+                                <th></th>
                             </tr>
                             </thead>
 
@@ -78,6 +79,15 @@ $status = $response["status"];
                                     <td><?php echo $service["serPrice"] ?></td>
                                     <td><?php echo $service["discountedPrice"] ?></td>
                                     <td><?php echo $service["serMinTime"] ?></td>
+                                    <td>
+                                        <center>
+                                            <a href="add_promotion.php?ser_id=<?php echo $service["serId"]; ?>&ser_name=<?php echo $service["serName"]; ?>">
+                                                <button class="<?php echo ($service["discountedPrice"] == 0)?"btn btn-primary btn-xs":"btn btn-success btn-xs" ?>">
+                                                    <?php echo ($service["discountedPrice"] == 0)?"Add Promotion":"See Promotion" ?>
+                                                </button>
+                                            </a>
+                                        </center>
+                                    </td>
                                     <td>
                                         <center>
                                             <a href="service_update.php?ser_id=<?php echo $service["serId"]; ?>">
