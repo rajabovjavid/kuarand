@@ -23,9 +23,9 @@ $employee = $response["data"];
                         <h2>Employee Info
                             <small>
 
-                                <b style="color:<?php echo (apc_fetch("action_status") == "ok") ? 'green' : 'red' ?>;">
+                                <b style="color:<?php echo (apcu_fetch("action_status") == "ok") ? 'green' : 'red' ?>;">
                                     <?php
-                                    echo apc_fetch("message");
+                                    echo apcu_fetch("message");
                                     apcu_delete("message");
                                     ?>
                                 </b>
