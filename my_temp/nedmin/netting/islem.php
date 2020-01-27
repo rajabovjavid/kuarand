@@ -752,11 +752,11 @@ if ($_GET['urunsil'] == "ok") {
 
     if ($kontrol) {
 
-        Header("Location:../production/urun.php?durum=ok");
+        Header("Location:../production/hd_reservations.php?durum=ok");
 
     } else {
 
-        Header("Location:../production/urun.php?durum=no");
+        Header("Location:../production/hd_reservations.php?durum=no");
     }
 
 }
@@ -792,11 +792,11 @@ if (isset($_POST['urunekle'])) {
 
     if ($insert) {
 
-        Header("Location:../production/urun.php?durum=ok");
+        Header("Location:../production/hd_reservations.php?durum=ok");
 
     } else {
 
-        Header("Location:../production/urun.php?durum=no");
+        Header("Location:../production/hd_reservations.php?durum=no");
     }
 
 }
@@ -925,11 +925,11 @@ if ($_GET['urun_onecikar'] == "ok") {
     if ($update) {
 
 
-        Header("Location:../production/urun.php?durum=ok");
+        Header("Location:../production/hd_reservations.php?durum=ok");
 
     } else {
 
-        Header("Location:../production/urun.php?durum=no");
+        Header("Location:../production/hd_reservations.php?durum=no");
     }
 
 }
