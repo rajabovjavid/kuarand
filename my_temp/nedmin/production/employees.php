@@ -82,7 +82,7 @@ $status = $response["status"];
                                     </td>
                                     <td>
                                         <center>
-                                            <a href="../../api_routes/panel_routes/delete_employee_route.php?emp_id=<?php echo $employee["employeeId"]; ?>&kullanicisil=ok">
+                                            <a href="../../api_routes/panel_routes/delete_employee_rout.php?emp_id=<?php echo $employee[">
                                                 <button class="btn btn-danger btn-xs">Sil</button>
                                             </a>
                                         </center>

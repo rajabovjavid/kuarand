@@ -14,13 +14,13 @@ $response = json_decode($make_call, true);
 $message = $response["message"];
 $status = $response["status"];
 
+apcu_store("action_status", $status);
+
 if($status == null){
-    apcu_store("action_status", $status);
     apcu_store("message", "sistem hatası");
     header("Location:../../nedmin/production/employees.php");
     exit;
 }
 
-apcu_store("action_status", $status);
 apcu_store("message", $message);
 header("Location:../../nedmin/production/employees.php");

@@ -23,9 +23,9 @@ $employee = $response["data"];
                         <h2>Employee Info
                             <small>
 
-                                <b style="color:<?php echo (apc_fetch("action_status") == "ok") ? 'green' : 'red' ?>;">
+                                <b style="color:<?php echo (apcu_fetch("action_status") == "ok") ? 'green' : 'red' ?>;">
                                     <?php
-                                    echo apc_fetch("message");
+                                    echo apcu_fetch("message");
                                     apcu_delete("message");
                                     ?>
                                 </b>
@@ -41,7 +41,7 @@ $employee = $response["data"];
                         <br/>
 
                         <!-- / => en kök dizine çık ... ../ bir üst dizine çık -->
-                        <form action="../../api_routes/panel_routes/update_employee_route.php" method="POST" id="demo-form2" data-parsley-validate
+                        <form action="../../api_routes/panel_routes/update_employee_rout.php" method="POST" id="demo-form2" data-parsley-validate
                               class="form-horizontal form-label-left">
 
                             <div class="form-group">
