@@ -41,9 +41,6 @@ if($panel_type == "0"){ // admin girişi
         header("Location:../../nedmin/production/index.php");
     }
 
-
-
-
 }
 elseif ($panel_type == "1"){ // kuaför girişi
 
@@ -72,7 +69,7 @@ elseif ($panel_type == "1"){ // kuaför girişi
     else {
         $_SESSION['email'] = $response["data"]["hdEmail"];
         $_SESSION['auth'] = "2"; // hairdresser yetkisi
-        apcu_store("message", $message);
+//        apcu_store("message", $message);
         apcu_store("is_panel_user", "1");
         apcu_store("panel_type", "hairdresser");
         apcu_store("user_data", $response["data"]);

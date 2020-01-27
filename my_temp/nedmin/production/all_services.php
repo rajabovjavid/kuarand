@@ -7,7 +7,7 @@ include '../../api_routes/curl_api.php';
 $user_data = apcu_fetch("user_data");
 
 // filter employee by hd _route
-$make_call = callAPI('GET', 'http://localhost/rest_api_slim/public/api/employee/filterEmployeeByHd?hd_id=' . $user_data["hdId"], false);
+$make_call = callAPI('GET', 'http://localhost/rest_api_slim/public/api/service/getAllServices', false);
 $response = json_decode($make_call, true);
 $message = $response["message"];
 $status = $response["status"];
@@ -24,15 +24,14 @@ $status = $response["status"];
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                     <div class="x_title">
-                        <h2>Employees
+                        <h2>Services
                             <small>
-                                <?php
-                                if ($_GET['durum'] == "ok") { ?>
-                                    <b style="color:green;">İşlem Başarılı...</b>
-                                <?php } elseif ($_GET['durum'] == "no") { ?>
-                                    <b style="color:red;">İşlem Başarısız...</b>
-                                <?php }
-                                ?>
+                                <b style="color:<?php echo (apcu_fetch("action_status") == "ok") ? 'green' : 'red' ?>;">
+                                    <?php
+                                    echo apcu_fetch("message");
+                                    apcu_delete("message");
+                                    ?>
+                                </b>
                             </small>
                         </h2>
                         <ul class="nav navbar-right panel_toolbox">
@@ -40,7 +39,7 @@ $status = $response["status"];
                         </ul>
                         <div class="clearfix"></div>
                         <div align="right">
-                            <a href="add_employee.php">
+                            <a href="add_service.php">
                                 <button class="btn btn-success btn-xs"> Yeni Ekle</button>
                             </a>
                         </div>
@@ -54,10 +53,9 @@ $status = $response["status"];
                                cellspacing="0" width="100%">
                             <thead>
                             <tr>
-                                <th>ID</th>
-                                <th>NAME SURNAME</th>
-                                <th>GENDER</th>
-                                <th></th>
+                                <th>Service ID</th>
+                                <th>Service Name</th>
+                                <th>Type</th>
                                 <th></th>
                             </tr>
                             </thead>
@@ -66,24 +64,17 @@ $status = $response["status"];
 
                             <?php
 
-                            foreach ( $response["data"] as $employee ) { ?>
+                            foreach ( $response["data"] as $service ) { ?>
 
 
                                 <tr>
-                                    <td><?php echo $employee["employeeId"] ?></td>
-                                    <td><?php echo $employee["employeeName"] ?></td>
-                                    <td><?php echo ($employee["employeeGender"]=='1')?"erkek":'kadın';?></td>
+                                    <td><?php echo $service["serId"] ?></td>
+                                    <td><?php echo $service["serName"] ?></td>
+                                    <td><?php echo ($service["serType"]=='1')?"for men":'for women';?></td>
                                     <td>
                                         <center>
-                                            <a href="employee_update.php?emp_id=<?php echo $employee["employeeId"]; ?>">
-                                                <button class="btn btn-primary btn-xs">Düzenle</button>
-                                            </a>
-                                        </center>
-                                    </td>
-                                    <td>
-                                        <center>
-                                            <a href="../../api_routes/panel_routes/delete_employee_rout.php?emp_id=<?php echo $employee[">
-                                                <button class="btn btn-danger btn-xs">Sil</button>
+                                            <a href="add_selected_service.php?ser_id=<?php echo $service["serId"]; ?>">
+                                                <button class="btn btn-primary btn-xs">Select</button>
                                             </a>
                                         </center>
                                     </td>

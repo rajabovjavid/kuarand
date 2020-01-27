@@ -95,11 +95,7 @@ $user_data = apcu_fetch("user_data");
                         <!--                        <img src="images/img.jpg" alt="..." class="img-circle profile_img">-->
                     </div>
                     <div class="profile_info">
-                        <?php if (apcu_fetch("panel_type") == "admin") { ?>
-                            <h2><?php echo $user_data['adminName'] ?></h2>
-                        <?php } elseif (apcu_fetch("panel_type") == "hairdresser") { ?>
-                            <h2><?php echo $user_data['hdName'] ?></h2>
-                        <?php } ?>
+                        <h2><?php echo (apcu_fetch("panel_type") == "admin")?$user_data['adminName']:$user_data['hdName'] ?></h2>
                     </div>
                 </div>
                 <!-- /menu profile quick info -->
@@ -131,6 +127,11 @@ $user_data = apcu_fetch("user_data");
                             <li><a href="hd_reservations.php"><i class="fa fa-shopping-basket"></i> Reservations </a></li>
 
                             <li><a href="hd_work_hour.php"><i class="fa fa-info"></i> Hairdresser Work Hour </a></li>
+
+                            <li><a href="services.php"><i class="fa fa-user"></i> Services </a></li>
+
+                            <li><a href="urun.php"><i class="fa fa-shopping-basket"></i> Ürünler </a></li>
+
 
                             <li><a href="menu.php"><i class="fa fa-list"></i> Menüler </a></li>
 

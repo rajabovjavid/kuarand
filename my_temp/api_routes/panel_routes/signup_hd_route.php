@@ -14,19 +14,22 @@ $data_array = array(
     "address_other" => $_POST['address_other'],
 );
 
-$make_call = callAPI('POST', 'http://localhost/rest_api_slim/public/api/panel_routes/signup', json_encode($data_array));
+$make_call = callAPI('POST', 'http://localhost/rest_api_slim/public/api/hairdresser/addHairdresser', json_encode($data_array));
 $response = json_decode($make_call, true);
 $message = $response["message"];
 $status = $response["status"];
 
-if($status == "error"){
-    $error_code = $response["error_code"];
-    if ($error_code == 1){
-        header("Location:../../views/hd_signup.php?message=$message");
-    }
-    elseif ($error_code == 2){
-        header("Location:../../views/hd_signup.php?message=$message");
-    }
+if($status == null){
+    apcu_store("message", "sistem hatası");
+    header("Location:../../views/hd_signup.php");
+    exit;
 }
 
-header("Location:../../views/signin.php?message=$message");
+apcu_store("message", $message);
+
+if ($status == "error"){
+    header("Location:../../views/hd_signup.php");
+    exit;
+}
+
+header("Location:../../nedmin/production/login.php");

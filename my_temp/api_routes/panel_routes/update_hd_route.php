@@ -26,20 +26,19 @@ $response = json_decode($make_call, true); // api'den gelen response
 $status = $response["status"];
 $message = $response["message"];
 
+apcu_store("action_status", $status);
+
 if($status == null) {
-    apcu_store("action_status", $status);
     apcu_store("message", "sistem hatası");
     header("Location:../../nedmin/production/hd_info.php");
     exit;
 }
 elseif ($status == "error"){
-    apcu_store("action_status", $status);
     apcu_store("message", $message);
     header("Location:../../nedmin/production/hd_info.php");
     exit;
 }
 elseif ($status == "ok"){
-    apcu_store("action_status", $status);
     apcu_store("message", $message);
     apcu_store("user_data", $response["data"]);
     header("Location:../../nedmin/production/hd_info.php");
