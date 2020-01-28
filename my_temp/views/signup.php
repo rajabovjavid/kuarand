@@ -1,3 +1,11 @@
+<?php
+
+if(isset($_SESSION["email"]))
+    header("Location:index.php");
+?>
+
+?>
+
 <!--
 Author: Colorlib
 Author URL: https://colorlib.com
@@ -23,7 +31,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 	<div class="main-w3layouts wrapper">
 		<h1>Create User Account</h1>
 		<div class="main-agileinfo">
-			<button><a href="../index.php">Back To Home</a></button>
+			<button><a href="index.php">Back To Home</a></button>
 			<div class="agileits-top">
 
 				<form action="../api_routes/customer_routes/signup_cus_route.php" method="post">

@@ -1,11 +1,11 @@
 <?php
-ob_start();
-session_start();
+
+include "auth_check.php";
 
 if(isset($_SESSION["email"])){
-    include "api_routes/curl_api.php";
+    include "../api_routes/curl_api.php";
 
-    $get_data = callAPI('GET', 'http://localhost/rest_api_slim/public/api/customer_routes/getName/'.$_SESSION["email"], false);
+    $get_data = callAPI('GET', 'http://localhost/rest_api_slim/public/api/customer/getName?cus_email='.$_SESSION["email"], false);
     $response = json_decode($get_data, true);
     $customer_name = $response["data"];
 }
@@ -27,17 +27,9 @@ if(isset($_SESSION["email"])){
                     <nav class="main_nav">
                         <ul class="d-flex flex-row align-items-center justify-content-start">
 
-                            <?php if($comes_from_page == "index") { ?>
-                                <li class="active"><a href="">Anasayfa</a></li>
-                            <?php } else { ?>
-                                <li><a href=<?php echo $index_url ?>>Anasayfa</a></li>
-                            <?php } ?>
+                            <li class=""><a href="index.php">Anasayfa</a></li>
 
-                            <?php if($comes_from_page == "list_hairdressers") { ?>
-                            <li class="active"><a href="">Salonlar</a></li>
-                            <?php } else { ?>
-                            <li><a href="views/list_hairdressers.php">Salonlar</a></li>
-                            <?php } ?>
+                            <li class=""><a href="list_hairdressers.php">Salonlar</a></li>
 
                             <li><a href="">Hakkımızda</a></li>
                             <li><a href="">İletişim</a></li>
@@ -46,14 +38,14 @@ if(isset($_SESSION["email"])){
 
                     <div class="header_extra d-flex flex-row align-items-center justify-content-start ml-auto">
                         <?php if (!isset($_SESSION['email'])) { ?>
-                            <div class="book_button trans_200"><a href=<?php echo $sign_url ?>>Sign In/Up</a></div>
+                            <div class="book_button trans_200"><a href="signin.php">Sign In/Up</a></div>
                         <?php } else { ?>
                             <div class="dropdown">
                                 <button class="dropbtn"><?php echo $customer_name?></button>
                                 <div class="dropdown-content">
                                     <a href="#">Bilgilerim</a>
                                     <a href="#">Randevularım</a>
-                                    <a href=<?php echo $signout_url ?>>Sign Out</a>
+                                    <a href="signout_action.php">Sign Out</a>
                                 </div>
                             </div>
                         <?php } ?>

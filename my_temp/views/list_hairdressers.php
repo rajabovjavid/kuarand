@@ -1,7 +1,6 @@
 <?php
 
-ob_start();
-session_start();
+include "auth_check.php";
 
 ?>
 
@@ -27,14 +26,7 @@ session_start();
 
 <div class="super_container">
 
-    <?php
-        $comes_from_page = "list_hairdressers";
-        $index_url = "../index.php";
-        $sign_url = "signin.php";
-        $signout_url = "../actions/customer_actions/signout_action.php";
-        $comes_from_url = "";
-        include "../header.php";
-    ?>
+    <?php include "header.php"; ?>
 
     <!-- Rooms -->
 <!--<a href="./../../index.php"></a>-->
@@ -154,7 +146,7 @@ session_start();
         </div>
     </div>
 
-    <?php include "../footer.php"?>
+    <?php include "footer.php" ?>
 
 
 </div>
