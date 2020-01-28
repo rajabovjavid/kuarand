@@ -1,6 +1,7 @@
 <?php
 
 include "auth_check.php";
+include "../api_routes/curl_api.php";
 
 ?>
 

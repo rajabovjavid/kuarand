@@ -3,11 +3,10 @@
 include "auth_check.php";
 
 if(isset($_SESSION["email"])){
-    include "../api_routes/curl_api.php";
-
+//    include "../api_routes/curl_api.php";
     $get_data = callAPI('GET', 'http://localhost/rest_api_slim/public/api/customer/getName?cus_email='.$_SESSION["email"], false);
     $response = json_decode($get_data, true);
-    $customer_name = $response["data"];
+    $customer = apcu_fetch("user_data");
 }
 
 ?>
@@ -41,7 +40,7 @@ if(isset($_SESSION["email"])){
                             <div class="book_button trans_200"><a href="signin.php">Sign In/Up</a></div>
                         <?php } else { ?>
                             <div class="dropdown">
-                                <button class="dropbtn"><?php echo $customer_name?></button>
+                                <button class="dropbtn"><?php echo $customer["customerName"]?></button>
                                 <div class="dropdown-content">
                                     <a href="#">Bilgilerim</a>
                                     <a href="#">Randevularım</a>
@@ -50,6 +49,16 @@ if(isset($_SESSION["email"])){
                             </div>
                         <?php } ?>
                     </div>
+                    <small>
+                        <?php
+                        echo apcu_fetch("message");
+                        apcu_delete("message")
+                        ?>
+                    </small>
+
+
+
+
                     <div class="hamburger ml-auto"><i class="fa fa-bars" aria-hidden="true"></i></div>
                 </div>
             </div>
