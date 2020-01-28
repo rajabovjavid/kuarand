@@ -41,17 +41,22 @@ $employee = $response["data"];
                         <br/>
 
                         <!-- / => en kök dizine çık ... ../ bir üst dizine çık -->
-                        <form action="../../api_routes/panel_routes/update_employee_rout.php" method="POST" id="demo-form2" data-parsley-validate
+                        <form action="../../api_routes/panel_routes/update_employee_rout.php" method="POST" enctype="multipart/form-data"
+                              id="demo-form2" data-parsley-validate
                               class="form-horizontal form-label-left">
 
+                            <input type="hidden" name="employee_id" value="<?php echo $employee["employeeId"]; ?>">
+                            <input type="hidden" name="employee_photo_base64" value="<?php echo $employee["employeePhoto"]; ?>">
+
                             <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">ID
-                                    <span class="required">*</span>
+                                <img src="data:image/jpeg;base64,<?php echo $employee['employeePhoto']?>" height="200" width="200" class="img-thumnail" />
+                            </div>
+
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Resim Seç<span class="required">*</span>
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input type="text" id="first-name" name="employee_id" readonly
-                                           value="<?php echo $employee["employeeId"]; ?>" required="required"
-                                           class="form-control col-md-7 col-xs-12">
+                                    <input type="file" id="image"  name="image"  class="form-control col-md-7 col-xs-12" />
                                 </div>
                             </div>
 
@@ -73,10 +78,10 @@ $employee = $response["data"];
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <select id="heard" class="form-control" name="employee_gender" required="">
-                                        <option value="0" <?php if($employee['employeeGender'] == 0) echo'selected="selected"'; ?>>
+                                        <option value="0" <?php if ($employee['employeeGender'] == 0) echo 'selected="selected"'; ?>>
                                             Kadın
                                         </option>
-                                        <option value="1" <?php if($employee['employeeGender'] == 1) echo'selected="selected"'; ?>>
+                                        <option value="1" <?php if ($employee['employeeGender'] == 1) echo 'selected="selected"'; ?>>
                                             Erkek
                                         </option>
                                     </select>

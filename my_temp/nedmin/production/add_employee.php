@@ -38,7 +38,7 @@ include 'header.php';
                     <div class="x_content">
                         <br/>
 
-                        <form action="../../api_routes/panel_routes/add_employee_route.php" method="POST"
+                        <form action="../../api_routes/panel_routes/add_employee_route.php" method="POST" enctype="multipart/form-data"
                               id="demo-form2" data-parsley-validate
                               class="form-horizontal form-label-left">
 
@@ -48,7 +48,7 @@ include 'header.php';
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Resim Seç<span class="required">*</span>
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input type="file" id="first-name"  name="employee_photo"  class="form-control col-md-7 col-xs-12">
+                                    <input type="file" id="image"  name="image"  class="form-control col-md-7 col-xs-12" required="required"/>
                                 </div>
                             </div>
 
@@ -79,7 +79,8 @@ include 'header.php';
                             <div class="ln_solid"></div>
                             <div class="form-group">
                                 <div align="right" class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                                    <button type="submit" name="employee_add" class="btn btn-success">Ekle
+                                    <button type="submit" name="insert_image" id="insert_image" class="btn btn-success">
+                                        Ekle
                                     </button>
                                 </div>
                             </div>
