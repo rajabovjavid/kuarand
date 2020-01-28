@@ -7,7 +7,7 @@ session_start();
 
 <?php
 
-$search_data = apcu_fetch("user_data")
+$search_data = apcu_fetch("search_data")
 
 ?>
 <!DOCTYPE html>
