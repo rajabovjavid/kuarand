@@ -5,6 +5,23 @@ session_start();
 
 ?>
 
+<?php
+
+
+
+include './api_routes/curl_api.php';
+
+$user_data = apcu_fetch("user_data");
+
+// filter employee by hd _route
+$make_call = callAPI('GET', 'http://localhost/rest_api_slim/public/api/service/getAllServices', false);
+$response = json_decode($make_call, true);
+$message = $response["message"];
+$status = $response["status"];
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -72,63 +89,44 @@ session_start();
                         <div class="col">
                             <div class="search_box_container d-flex flex-row align-items-center justify-content-start">
                                 <div class="search_form_container">
-                                    <form action="#" id="search_form" class="search_form">
+                                    <form action="api_routes/customer_routes/search_hairdressers_results_route.php" id="search_form" class="search_form" method="POST">
                                         <div class="d-flex flex-lg-row flex-column align-items-center justify-content-start">
                                             <ul class="search_form_list d-flex flex-row align-items-center justify-content-start flex-wrap">
-                                                <li class="search_dropdown d-flex flex-row align-items-center justify-content-start">
-                                                    <span>Check in</span>
-                                                    <i class="fa fa-chevron-down ml-auto" aria-hidden="true"></i>
-                                                    <ul>
-                                                        <li>Check in item 1</li>
-                                                        <li>Check in item 2</li>
-                                                        <li>Check in item 3</li>
-                                                        <li>Check in item 4</li>
-                                                        <li>Check in item 5</li>
-                                                    </ul>
-                                                </li>
-                                                <li class="search_dropdown d-flex flex-row align-items-center justify-content-start">
-                                                    <span>Check out</span>
-                                                    <i class="fa fa-chevron-down ml-auto" aria-hidden="true"></i>
-                                                    <ul>
-                                                        <li>Check out item 1</li>
-                                                        <li>Check out item 2</li>
-                                                        <li>Check out item 3</li>
-                                                        <li>Check out item 4</li>
-                                                        <li>Check out item 5</li>
-                                                    </ul>
-                                                </li>
-                                                <li class="search_dropdown d-flex flex-row align-items-center justify-content-start">
-                                                    <span>Guests</span>
-                                                    <i class="fa fa-chevron-down ml-auto" aria-hidden="true"></i>
-                                                    <ul>
-                                                        <li>1</li>
-                                                        <li>2</li>
-                                                        <li>3</li>
-                                                        <li>4</li>
-                                                        <li>5</li>
-                                                    </ul>
-                                                </li>
-                                                <li class="search_dropdown d-flex flex-row align-items-center justify-content-start">
-                                                    <span>Children</span>
-                                                    <i class="fa fa-chevron-down ml-auto" aria-hidden="true"></i>
-                                                    <ul>
-                                                        <li>1</li>
-                                                        <li>2</li>
-                                                        <li>3</li>
-                                                        <li>4</li>
-                                                        <li>5</li>
-                                                    </ul>
-                                                </li>
-                                                <li class="search_dropdown d-flex flex-row align-items-center justify-content-start">
-                                                    <span>Rooms</span>
-                                                    <i class="fa fa-chevron-down ml-auto" aria-hidden="true"></i>
-                                                    <ul>
-                                                        <li>1</li>
-                                                        <li>2</li>
-                                                        <li>3</li>
-                                                        <li>4</li>
-                                                        <li>5</li>
-                                                    </ul>
+
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    <input type="text" name="hd_name"
+                                                           value=""
+                                                           class="form-control col-md-7 col-xs-12" placeholder="Hairdresser Name">
+                                                </div>
+
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    <input type="text" name="city"
+                                                           value="" required="required"
+                                                           class="form-control col-md-7 col-xs-12" placeholder="City">
+                                                </div>
+
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    <input type="text" name="region"
+                                                           value="" required="required"
+                                                           class="form-control col-md-7 col-xs-12" placeholder="Region">
+                                                </div>
+
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <select id="heard" class="form-control" name="ser_name" required="">
+                                                    <?php
+                                                    foreach ( $response["data"] as $service ) { ?>
+                                                        <option value=<?php echo $service["serName"] ?>> <?php echo $service["serName"] ?> </option>
+                                                    <?php } ?>
+                                                </select>
+                                                </div>
+
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    <select id="heard" class="form-control" name="hd_type" required="">
+                                                        <option value=0>For Woman</option>
+                                                        <option value=1>For Man</option>
+                                                    </select>
+                                                </div>
+
                                                 </li>
                                             </ul>
                                             <button class="search_button">search</button>
