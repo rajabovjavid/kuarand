@@ -14,7 +14,7 @@ include 'header.php';
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                     <div class="x_title">
-                        <h2>Add Employee <small>,
+                        <h2>Add Photo <small>,
 
                                 <?php
 
@@ -38,11 +38,11 @@ include 'header.php';
                     <div class="x_content">
                         <br/>
 
-                        <form action="../../api_routes/panel_routes/add_employee_route.php" method="POST" enctype="multipart/form-data"
+                        <form action="../../api_routes/panel_routes/add_hdPhoto_route.php" method="POST" enctype="multipart/form-data"
                               id="demo-form2" data-parsley-validate
                               class="form-horizontal form-label-left">
 
-                            <input type="hidden" name="hd_id" value="<?php echo apcu_fetch("user_data")["hdId"]; ?>">
+                            <input type="hidden" name="hd_id" value="<?php echo $user_data["hdId"]; ?>">
 
                             <div class="form-group">
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Resim Seç<span class="required">*</span>
@@ -53,26 +53,13 @@ include 'header.php';
                             </div>
 
                             <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Name Surname
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Priority
                                     <span class="required">*</span>
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input type="text" id="first-name" name="employee_name"
+                                    <input type="text" id="first-name" name="priority"
                                            value="" required="required"
                                            class="form-control col-md-7 col-xs-12">
-                                </div>
-                            </div>
-
-
-                            <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Gender
-                                    <span class="required">*</span>
-                                </label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <select id="heard" class="form-control" name="employee_gender" required="">
-                                        <option value="0">Kadın</option>
-                                        <option value="1">Erkek</option>
-                                    </select>
                                 </div>
                             </div>
 
