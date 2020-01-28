@@ -2,6 +2,26 @@
 
 include "auth_check.php";
 
+include "../api_routes/curl_api.php";
+
+if (!isset($_GET["hd_id"])) {
+    header("Location:index.php");
+    exit;
+}
+
+
+$make_call = callAPI('GET', 'http://localhost/rest_api_slim/public/api/hairdresser/getAllHdInfo?hd_id=' . $_GET["hd_id"], false);
+$response = json_decode($make_call, true);
+$message = $response["message"];
+$status = $response["status"];
+
+if ($status != "ok" || $status == null) {
+    header("Location:index.php");
+    exit;
+}
+
+$hd = $response["data"];
+
 ?>
 
 <!DOCTYPE html>
@@ -39,7 +59,7 @@ include "auth_check.php";
 
 <div class="super_container">
 
-    <?php include "header.php";?>
+    <?php include "header.php"; ?>
 
     <!-- Rooms -->
     <!--<a href="./../../index.php"></a>-->
@@ -48,149 +68,171 @@ include "auth_check.php";
             <div class="row">
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="x_panel">
-                        <div class="x_title">
-                            <h2>E-commerce page design</h2>
-                            <ul class="nav navbar-right panel_toolbox">
-                                <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                                </li>
-                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-                                    <ul class="dropdown-menu" role="menu">
-                                        <li><a href="#">Settings 1</a>
-                                        </li>
-                                        <li><a href="#">Settings 2</a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li><a class="close-link"><i class="fa fa-close"></i></a>
-                                </li>
-                            </ul>
-                            <div class="clearfix"></div>
-                        </div>
+
                         <div class="x_content">
 
-                            <div class="col-md-7 col-sm-7 col-xs-12">
+                            <div class="col-md-7 col-sm-7 col-xs-12 mb-5">
                                 <div class="product-image">
-                                    <img src="images/prod-1.jpg" alt="..." />
+                                    <img src="data:image/jpeg;base64,<?php echo $hd['hdImpPhoto'] ?>" alt="..."/>
                                 </div>
                                 <div class="product_gallery">
-                                    <a>
-                                        <img src="images/prod-2.jpg" alt="..." />
-                                    </a>
-                                    <a>
-                                        <img src="images/prod-3.jpg" alt="..." />
-                                    </a>
-                                    <a>
-                                        <img src="images/prod-4.jpg" alt="..." />
-                                    </a>
-                                    <a>
-                                        <img src="images/prod-5.jpg" alt="..." />
-                                    </a>
+                                    <?php foreach ($hd["hdGallery"] as $photo) {
+                                        if ($photo["hdPhotoPriority"] == 0) {
+                                            ?>
+                                            <a>
+                                                <img src="data:image/jpeg;base64,<?php echo $photo['hdPhoto'] ?>"
+                                                     alt="..."/>
+                                            </a>
+                                        <?php }
+                                    } ?>
                                 </div>
                             </div>
 
                             <div class="col-md-5 col-sm-5 col-xs-12" style="border:0px solid #e5e5e5;">
 
-                                <h3 class="prod_title">LOWA Men’s Renegade GTX Mid Hiking Boots Review</h3>
+                                <h1> <?php echo $hd["hdName"] ?> </h1>
 
-                                <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terr.</p>
-                                <br />
+                                <hr>
 
-                                <div class="">
-                                    <h2>Available Colors</h2>
-                                    <ul class="list-inline prod_color">
-                                        <li>
-                                            <p>Green</p>
-                                            <div class="color bg-green"></div>
-                                        </li>
-                                        <li>
-                                            <p>Blue</p>
-                                            <div class="color bg-blue"></div>
-                                        </li>
-                                        <li>
-                                            <p>Red</p>
-                                            <div class="color bg-red"></div>
-                                        </li>
-                                        <li>
-                                            <p>Orange</p>
-                                            <div class="color bg-orange"></div>
-                                        </li>
+                                <h2>
+                                    Address: <?php echo $hd["hdAddressCity"] ?>,<?php echo $hd["hdAddressRegion"] ?>
+                                    ,<?php echo $hd["hdAddressNeighborhood"] ?>,<?php echo $hd["hdAddressStreet"] ?>
+                                    ,<?php echo $hd["hdAddressOtherInfo"] ?>.
+                                </h2>
 
-                                    </ul>
-                                </div>
-                                <br />
+                                <hr>
+                                <h2>Contacts:</h2>
+                                <?php foreach ($hd["hdContacts"] as $contact) { ?>
+                                    <h2>
+                                        <?php echo $contact["hdContact"] ?>
+                                    </h2>
+                                <?php } ?>
 
-                                <div class="">
-                                    <h2>Size <small>Please select one</small></h2>
-                                    <ul class="list-inline prod_size">
-                                        <li>
-                                            <button type="button" class="btn btn-default btn-xs">Small</button>
-                                        </li>
-                                        <li>
-                                            <button type="button" class="btn btn-default btn-xs">Medium</button>
-                                        </li>
-                                        <li>
-                                            <button type="button" class="btn btn-default btn-xs">Large</button>
-                                        </li>
-                                        <li>
-                                            <button type="button" class="btn btn-default btn-xs">Xtra-Large</button>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <br />
-
+                                <hr>
                                 <div class="">
                                     <div class="product_price">
-                                        <h1 class="price">Ksh80.00</h1>
-                                        <span class="price-tax">Ex Tax: Ksh80.00</span>
+                                        <h1 class="price">Rate: <?php echo $hd["hdRating"] ?></h1>
+                                        <span class="price-tax">Comment Count: <?php echo $hd["hdCommentCount"] ?></span>
                                         <br>
                                     </div>
-                                </div>
-
-                                <div class="">
-                                    <button type="button" class="btn btn-default btn-lg">Add to Cart</button>
-                                    <button type="button" class="btn btn-default btn-lg">Add to Wishlist</button>
-                                </div>
-
-                                <div class="product_social">
-                                    <ul class="list-inline">
-                                        <li><a href="#"><i class="fa fa-facebook-square"></i></a>
-                                        </li>
-                                        <li><a href="#"><i class="fa fa-twitter-square"></i></a>
-                                        </li>
-                                        <li><a href="#"><i class="fa fa-envelope-square"></i></a>
-                                        </li>
-                                        <li><a href="#"><i class="fa fa-rss-square"></i></a>
-                                        </li>
-                                    </ul>
                                 </div>
 
                             </div>
 
 
-                            <div class="col-md-12">
+                            <div class="col-md-12 mt-5">
 
                                 <div class="" role="tabpanel" data-example-id="togglable-tabs">
                                     <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
-                                        <li role="presentation" class="active"><a href="#tab_content1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">Home</a>
+                                        <li role="presentation" class="active"><a href="#tab_content1" id="home-tab"
+                                                                                  role="tab" data-toggle="tab"
+                                                                                  aria-expanded="true">Services</a>
                                         </li>
-                                        <li role="presentation" class=""><a href="#tab_content2" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">Profile</a>
+                                        <li role="presentation" class=""><a href="#tab_content2" role="tab"
+                                                                            id="profile-tab" data-toggle="tab"
+                                                                            aria-expanded="false">Employees</a>
                                         </li>
-                                        <li role="presentation" class=""><a href="#tab_content3" role="tab" id="profile-tab2" data-toggle="tab" aria-expanded="false">Profile</a>
+                                        <li role="presentation" class=""><a href="#tab_content3" role="tab"
+                                                                            id="profile-tab2" data-toggle="tab"
+                                                                            aria-expanded="false">Profile</a>
                                         </li>
                                     </ul>
                                     <div id="myTabContent" class="tab-content">
-                                        <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="home-tab">
-                                            <p>Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher
-                                                synth. Cosby sweater eu banh mi, qui irure terr.</p>
+                                        <div role="tabpanel" class="tab-pane fade active in" id="tab_content1"
+                                             aria-labelledby="home-tab">
+
+                                            <table id="datatable-responsive"
+                                                   class="table table-striped table-bordered dt-responsive nowrap"
+                                                   cellspacing="0" width="100%">
+                                                <thead>
+                                                <tr>
+                                                    <th>Service Name</th>
+                                                    <th>Type</th>
+                                                    <th>Price</th>
+                                                    <th>Discounted Price</th>
+                                                    <th>Min Time</th>
+                                                    <th></th>
+                                                </tr>
+                                                </thead>
+
+                                                <tbody>
+
+                                                <?php
+
+                                                foreach ($hd["hdServices"] as $service) { ?>
+
+
+                                                    <tr>
+                                                        <td><?php echo $service["serName"] ?></td>
+                                                        <td><?php echo ($service["serType"] == '1') ? "for men" : 'for women'; ?></td>
+                                                        <td><?php echo $service["serPrice"] ?></td>
+                                                        <td><?php echo $service["discountedPrice"] ?></td>
+                                                        <td><?php echo $service["serMinTime"] ?></td>
+                                                        <td>
+                                                            <form method="POST" action="../api_routes/customer_routes/make_reservation_route.php">
+                                                                <input type="text" name="reserv_date" value="" placeholder="2020-02-04 12:00:00">
+                                                                <input type="hidden" name="hd_id" value="<?php echo $hd["hdId"] ?>">
+                                                                <input type="hidden" name="ser_id" value="<?php echo $service["serId"] ?>">
+                                                                <input type="hidden" name="cus_id" value="<?php echo apcu_fetch("user_data")["cusId"] ?>">
+                                                                <center>
+                                                                    <button type="submit" class="btn btn-success btn-xs">
+                                                                        Make Reservation
+                                                                    </button>
+                                                                </center>
+                                                            </form>
+
+                                                        </td>
+                                                    </tr>
+
+
+                                                <?php } ?>
+
+
+                                                </tbody>
+                                            </table>
+
+
                                         </div>
-                                        <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="profile-tab">
-                                            <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo
-                                                booth letterpress, commodo enim craft beer mlkshk aliquip</p>
+                                        <div role="tabpanel" class="tab-pane fade" id="tab_content2"
+                                             aria-labelledby="profile-tab">
+
+                                            <table id="datatable-responsive"
+                                                   class="table table-striped table-bordered dt-responsive nowrap"
+                                                   cellspacing="0" width="100%">
+                                                <thead>
+                                                <tr>
+                                                    <th>Photo</th>
+                                                    <th>Name</th>
+                                                </tr>
+                                                </thead>
+
+                                                <tbody>
+
+                                                <?php
+
+                                                foreach ($hd["hdEmployees"] as $employee) { ?>
+
+
+                                                    <tr>
+                                                        <td>
+                                                            <img src="data:image/jpeg;base64,<?php echo $employee["employeePhoto"] ?>"
+                                                                 height="100" width="80" class="img-thumnail"/>
+                                                        </td>
+                                                        <td><h2><?php echo $employee["employeeName"] ?></h2></td>
+                                                    </tr>
+
+
+                                                <?php } ?>
+
+
+                                                </tbody>
+                                            </table>
+
                                         </div>
-                                        <div role="tabpanel" class="tab-pane fade" id="tab_content3" aria-labelledby="profile-tab">
-                                            <p>xxFood truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui
-                                                photo booth letterpress, commodo enim craft beer mlkshk </p>
+                                        <div role="tabpanel" class="tab-pane fade" id="tab_content3"
+                                             aria-labelledby="profile-tab">
+
+
                                         </div>
                                     </div>
                                 </div>
@@ -222,7 +264,7 @@ include "auth_check.php";
 <script src="../plugins/colorbox/jquery.colorbox-min.js"></script>
 <script src="../plugins/parallax-js-master/parallax.min.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyCIwF204lFZg1y4kPSIhKaHEXMLYxxuMhA"></script>
-<script src="../js/rooms.js"></script>
+
 
 
 <!-- jQuery -->
