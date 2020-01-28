@@ -3,7 +3,7 @@
 include "auth_check.php";
 
 if(isset($_SESSION["email"])){
-    include "../api_routes/curl_api.php";
+//    include "../api_routes/curl_api.php";
 
     $get_data = callAPI('GET', 'http://localhost/rest_api_slim/public/api/customer/getName?cus_email='.$_SESSION["email"], false);
     $response = json_decode($get_data, true);

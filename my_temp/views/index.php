@@ -2,7 +2,7 @@
 
 include "auth_check.php";
 
-include '../api_routes/curl_api.php';
+include "../api_routes/curl_api.php";
 
 $user_data = apcu_fetch("user_data");
 
