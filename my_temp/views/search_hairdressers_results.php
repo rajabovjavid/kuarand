@@ -1,11 +1,6 @@
 <?php
 
-ob_start();
-session_start();
-
-?>
-
-<?php
+include "auth_check.php";
 
 $search_data = apcu_fetch("user_data")
 
@@ -32,14 +27,7 @@ $search_data = apcu_fetch("user_data")
 
 <div class="super_container">
 
-    <?php
-    $comes_from_page = "list_hairdressers";
-    $index_url = "./index.php";
-    $sign_url = "signin.php";
-    $signout_url = "../actions/customer_actions/signout_action.php";
-    $comes_from_url = "";
-    include "../header.php";
-    ?>
+    <?php include "header.php"; ?>
 
     <!-- Hairdressers -->
     <!--<a href="./../../index.php"></a>-->
@@ -77,7 +65,7 @@ $search_data = apcu_fetch("user_data")
         </div>
     </div>
 
-    <?php include "../footer.php"?>
+    <?php include "footer.php" ?>
 
 
 </div>
