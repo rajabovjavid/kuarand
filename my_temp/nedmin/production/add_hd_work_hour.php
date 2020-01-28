@@ -50,13 +50,13 @@ include 'header.php';
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <select id="heard" class="form-control" name="day" required="">
-                                        <option value="0">Monday</option>
-                                        <option value="1">Tuesday</option>
-                                        <option value="2">Wednesday</option>
-                                        <option value="3">Thursday</option>
-                                        <option value="4">Friday</option>
-                                        <option value="5">Saturday</option>
-                                        <option value="6">Sunday</option>
+                                        <option value=0>Monday</option>
+                                        <option value=1>Tuesday</option>
+                                        <option value=2>Wednesday</option>
+                                        <option value=3>Thursday</option>
+                                        <option value=4>Friday</option>
+                                        <option value=5>Saturday</option>
+                                        <option value=6>Sunday</option>
                                     </select>
                                 </div>
                             </div>
