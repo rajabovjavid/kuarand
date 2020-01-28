@@ -4,8 +4,6 @@ if(isset($_SESSION["email"]))
     header("Location:index.php");
 ?>
 
-?>
-
 <!--
 Author: Colorlib
 Author URL: https://colorlib.com
@@ -32,10 +30,17 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		<h1>Create User Account</h1>
 		<div class="main-agileinfo">
 			<button><a href="index.php">Back To Home</a></button>
+            <small>
+                <?php
+                echo apcu_fetch("message");
+                apcu_delete("message")
+                ?>
+            </small>
 			<div class="agileits-top">
 
 				<form action="../api_routes/customer_routes/signup_cus_route.php" method="post">
 					<input class="text" type="text" name="cus_name" placeholder="Name" required="">
+                    <input class="text" type="text" name="cus_phone" placeholder="Phone" required="">
 					<input class="text email" type="email" name="cus_email" placeholder="Email" required="">
 					<input class="text" type="password" name="cus_password" placeholder="Password" required="">
 					<input class="text w3lpass" type="password" name="cus_password_confirm" placeholder="Confirm Password" required="">
