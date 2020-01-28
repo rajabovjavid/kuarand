@@ -6,7 +6,7 @@ $data_array = array(
     "hd_id" => $_POST['hd_id'],
     "employee_name" => $_POST['employee_name'],
     "employee_gender" => $_POST["employee_gender"],
-    "employee_photo" => ""
+    "employee_photo" => $_POST["employee_photo"]
 );
 
 $make_call = callAPI('POST', 'http://localhost/rest_api_slim/public/api/employee/addEmployee', json_encode($data_array));
