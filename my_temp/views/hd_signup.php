@@ -1,3 +1,10 @@
+
+<?php
+
+include "auth_check.php";
+
+?>
+
 <!--
 Author: Colorlib
 Author URL: https://colorlib.com
@@ -23,7 +30,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <div class="main-w3layouts wrapper">
     <h1>Create Hairdresser</h1>
     <div class="main-agileinfo">
-        <button><a href="../index.php">Back To Home</a></button>
+        <button><a href="index.php">Back To Home</a></button>
         <div class="agileits-top">
             <form action="../api_routes/panel_routes/signup_hd_route.php" method="post">
                 <input class="text" type="text" name="hd_name" placeholder="Hairdersser Name" required="">

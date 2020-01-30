@@ -1,14 +1,10 @@
 <?php
 
 include 'header.php';
-include "check_hd_status.php";
+
+include "check_admin_auth.php";
 
 include "../../api_routes/curl_api.php";
-
-$make_call = callAPI('GET', 'http://localhost/rest_api_slim/public/api/hdContact/getHdContactById?hdContact_id=' . $_GET["hdContact_id"], false);
-$response = json_decode($make_call, true);
-$status = $response["status"];
-$contact = $response["data"];
 
 ?>
 
@@ -21,7 +17,7 @@ $contact = $response["data"];
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                     <div class="x_title">
-                        <h2>Contact Info
+                        <h2>Admin Auth
                             <small>
 
                                 <b style="color:<?php echo (apcu_fetch("action_status") == "ok") ? 'green' : 'red' ?>;">
@@ -42,31 +38,23 @@ $contact = $response["data"];
                         <br/>
 
                         <!-- / => en kök dizine çık ... ../ bir üst dizine çık -->
-                        <form action="../../api_routes/panel_routes/update_hdContact_route.php" method="POST" id="demo-form2" data-parsley-validate
+                        <form action="../../api_routes/panel_routes/update_admin_auth_route.php" method="POST"
+                              id="demo-form2" data-parsley-validate
                               class="form-horizontal form-label-left">
-                            <input type="hidden" name="hdContactId" value="<?php echo $contact['hdContactId']?>">
-                            <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Contact
-                                    <span class="required">*</span>
-                                </label>
-                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input type="text" id="first-name" name="hdContact"
-                                           value="<?php echo $contact["hdContact"]; ?>" required="required"
-                                           class="form-control col-md-7 col-xs-12">
-                                </div>
-                            </div>
+
+                            <input type="hidden" name="admin_id" value="<?php echo $_GET["admin_id"]; ?>">
 
                             <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Contact Type
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Status
                                     <span class="required">*</span>
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <select id="heard" class="form-control" name="hdContactType" required="">
-                                        <option value="0" <?php if($contact['hdContactType'] == 0) echo'selected="selected"'; ?>>
-                                            Phone
+                                    <select id="heard" class="form-control" name="admin_auth" required="">
+                                        <option value="0" <?php if ($_GET['admin_auth'] == 0) echo 'selected="selected"'; ?>>
+                                            Low
                                         </option>
-                                        <option value="1" <?php if($contact['hdContactType'] == 1) echo'selected="selected"'; ?>>
-                                            Email
+                                        <option value="1" <?php if ($_GET['admin_auth'] == 1) echo 'selected="selected"'; ?>>
+                                            High
                                         </option>
                                     </select>
                                 </div>
@@ -75,7 +63,7 @@ $contact = $response["data"];
                             <div class="ln_solid"></div>
                             <div class="form-group">
                                 <div align="right" class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                                    <button type="submit" name="hdContact_update" class="btn btn-success">Güncelle
+                                    <button type="submit" name="hd_update" class="btn btn-success">Update Auth
                                     </button>
                                 </div>
                             </div>

@@ -25,5 +25,5 @@ if($status == null){
 }
 
 apcu_store("message", $message);
-apcu_store("user_data", $response["data"]); // user data or smth else?
+apcu_store("search_data", $response["data"]); // user data or smth else?
 header("Location:../../views/search_hairdressers_results.php");

@@ -35,6 +35,6 @@ elseif ($status == "error"){
 elseif ($status == "ok"){
     apcu_store("action_status", $status);
     apcu_store("message", $message);
-    apcu_store("user_data", $response["data"]);
+//    apcu_store("user_data", $response["data"]);
     header("Location:../../nedmin/production/hd_address.php");
 }

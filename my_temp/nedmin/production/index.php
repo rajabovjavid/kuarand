@@ -14,10 +14,10 @@ include 'header.php';
                 <div class="col-md-12 col-sm-12 col-xs-12">
                     <div class="x_panel">
                         <div class="x_title">
-                            <?php if (apcu_fetch("panel_type") == "admin") { ?>
+                            <?php if ($_SESSION["auth"]==1) { ?>
                                 <h2>Admin Panel <small> Panele Hoşgeldiniz.</small></h2>
                             <?php }
-                            elseif (apcu_fetch("panel_type") == "hairdresser") { ?>
+                            elseif ($_SESSION["auth"]==2) { ?>
                                 <h2>Kuaför Panel <small> Panele Hoşgeldiniz.</small></h2>
                             <?php } ?>
                             <ul class="nav navbar-right panel_toolbox">

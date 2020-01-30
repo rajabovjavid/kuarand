@@ -2,7 +2,7 @@
 
 include 'header.php';
 
-
+include "check_hd_status.php";
 ?>
 
 <!-- page content -->
@@ -69,7 +69,7 @@ include 'header.php';
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <input type="text" id="start_hour" name="start_hour"
                                            value="" required="required"
-                                           class="form-control col-md-7 col-xs-12">
+                                           class="form-control col-md-7 col-xs-12" placeholder="9:00:00">
                                 </div>
                             </div>
 
@@ -80,7 +80,7 @@ include 'header.php';
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <input type="text" id="finish_hour" name="finish_hour"
                                            value="" required="required"
-                                           class="form-control col-md-7 col-xs-12">
+                                           class="form-control col-md-7 col-xs-12" placeholder="17:00:00">
                                 </div>
                             </div>
 

@@ -2,6 +2,8 @@
 
 include 'header.php';
 
+include "check_hd_status.php";
+
 include '../../api_routes/curl_api.php';
 
 $make_call = callAPI('GET', 'http://localhost/rest_api_slim/public/api/hdPromotion/getHdPromotionByHd_SerId?hd_id='.$user_data["hdId"].'&ser_id='.$_GET["ser_id"], false);
