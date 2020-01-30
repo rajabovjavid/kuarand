@@ -36,7 +36,7 @@
 
                 <form action="../../api_routes/panel_routes/signin_route.php" method="POST">
 
-                    <h1>Panel Giriş</h1>
+                    <h1>Panel Login</h1>
 
                     <div>
                         <input type="text" name="email" class="form-control"
