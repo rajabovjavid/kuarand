@@ -4,12 +4,7 @@ session_start();
 
 include "../curl_api.php";
 
-/*if(apcu_fetch("panel_type")=="admin"){ // kuaför güncelleme isteği admin tarafından gelmişse
-
-}
-elseif (apcu_fetch("panel_type")=="hairdresser"){ // kuaför kendi bilgilerini güncellemek istiyorsa
-    // TODO - hdName, hdPassword, hdType en az bir tanesini değiştirmemişse, api call yapılmadan geri dönülmesi lazım
-}*/
+$hdStatus = isset($_POST["radio"])? $_POST["radio"] : $_POST["hd_status"];
 
 // api'ye istek için post datası
 $data_array = array(
@@ -17,7 +12,7 @@ $data_array = array(
     "hd_email" => $_POST["hd_email"],
     "hd_password" => $_POST["hd_password"],
     "hd_type" => $_POST["hd_type"],
-    "hd_status" => $_POST["hd_status"]
+    "hd_status" => $hdStatus
 );
 
 // api'ye istek atma

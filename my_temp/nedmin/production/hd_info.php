@@ -40,23 +40,25 @@ include 'header.php';
                               class="form-horizontal form-label-left">
 
                             <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Hairdresser Name
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Hairdresser
+                                    Name
                                     <span class="required">*</span>
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input type="text" id="first-name" name="hdName"
+                                    <input type="text" id="first-name" name="hd_name"
                                            value="<?php echo $user_data['hdName'] ?>" required="required"
                                            class="form-control col-md-7 col-xs-12">
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Hairdresser Password
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Hairdresser
+                                    Password
                                     <span
                                             class="required">*</span>
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input type="password" id="first-name" name="hdPassword"
+                                    <input type="password" id="first-name" name="hd_password"
                                            placeholder="leave it empty, if you don't want to change your password"
                                            value=""
                                            class="form-control col-md-7 col-xs-12">
@@ -67,19 +69,20 @@ include 'header.php';
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Hairdresser
                                     Email</label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <input type="text" id="first-name" name="hdEmail" readonly
+                                    <input type="text" id="first-name" name="hd_email" readonly
                                            value="<?php echo $user_data['hdEmail'] ?>" required="required"
                                            class="form-control col-md-7 col-xs-12">
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Hairdresser Type
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Hairdresser
+                                    Type
                                     <span
                                             class="required">*</span>
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                    <select id="first" class="form-control" name="hdType" required="">
+                                    <select id="first" class="form-control" name="hd_type" required="">
                                         <option value="0" <?php if ($user_data['hdType'] == 0) echo 'selected="selected"'; ?>>
                                             For woman
                                         </option>
@@ -105,10 +108,18 @@ include 'header.php';
                                            ?>"
                                            required="required"
                                            class="form-control col-md-7 col-xs-12">
-                                    <input type="hidden" name="hdStatus" value="<?php echo $user_data['hdStatus'];?>">
+                                    <input type="hidden" name="hd_status" value="<?php echo $user_data['hdStatus']; ?>">
                                 </div>
                             </div>
-
+                            <?php if ($user_data['hdStatus'] == 1 or $user_data['hdStatus'] == -2) { ?>
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Siteye
+                                        Alınma Talep Et</label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <input type="radio" name="radio" value="2">
+                                    </div>
+                                </div>
+                            <?php } ?>
                             <div class="form-group">
                                 <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Hairdresser
                                     Rating</label>
