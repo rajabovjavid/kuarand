@@ -13,11 +13,11 @@ elseif (apcu_fetch("panel_type")=="hairdresser"){ // kuaför kendi bilgilerini g
 
 // api'ye istek için post datası
 $data_array = array(
-    "hd_name" => $_POST["hdName"],
-    "hd_email" => $_POST["hdEmail"],
-    "hd_password" => $_POST["hdPassword"],
-    "hd_type" => $_POST["hdType"],
-    "hd_status" => $_POST["hdStatus"]
+    "hd_name" => $_POST["hd_name"],
+    "hd_email" => $_POST["hd_email"],
+    "hd_password" => $_POST["hd_password"],
+    "hd_type" => $_POST["hd_type"],
+    "hd_status" => $_POST["hd_status"]
 );
 
 // api'ye istek atma
@@ -30,17 +30,30 @@ apcu_store("action_status", $status);
 
 if($status == null) {
     apcu_store("message", "sistem hatası");
-    header("Location:../../nedmin/production/hd_info.php");
+    if($_SESSION["auth"]==1){
+        header("Location:../../nedmin/production/hairdressers.php");
+    }elseif ($_SESSION["auth"]==2){
+        header("Location:../../nedmin/production/hd_info.php");
+    }
     exit;
 }
 elseif ($status == "error"){
     apcu_store("message", $message);
-    header("Location:../../nedmin/production/hd_info.php");
+    if($_SESSION["auth"]==1){
+        header("Location:../../nedmin/production/hairdressers.php");
+    }elseif ($_SESSION["auth"]==2){
+        header("Location:../../nedmin/production/hd_info.php");
+    }
     exit;
 }
 elseif ($status == "ok"){
     apcu_store("message", $message);
-    apcu_store("user_data", $response["data"]);
-    header("Location:../../nedmin/production/hd_info.php");
+    if($_SESSION["auth"]==1){
+        header("Location:../../nedmin/production/hairdressers.php");
+    }elseif ($_SESSION["auth"]==2){
+        apcu_store("user_data", $response["data"]);
+        header("Location:../../nedmin/production/hd_info.php");
+    }
+    exit;
 }
 

@@ -1,7 +1,7 @@
 <?php
 
 include 'header.php';
-
+include "check_hd_status.php";
 
 ?>
 

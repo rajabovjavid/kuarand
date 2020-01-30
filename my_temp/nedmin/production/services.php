@@ -1,6 +1,7 @@
 <?php
 
 include 'header.php';
+include "check_hd_status.php";
 
 include '../../api_routes/curl_api.php';
 

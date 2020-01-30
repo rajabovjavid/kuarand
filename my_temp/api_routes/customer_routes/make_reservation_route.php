@@ -1,6 +1,13 @@
 <?php
+ob_start();
+session_start();
 
 include "../curl_api.php";
+
+if (!isset($_SESSION["email"])){
+    header("Location:../../views/signin.php");
+    exit;
+}
 
 $data_array = array(
     "hd_id" => $_POST['hd_id'],
@@ -18,9 +25,9 @@ apcu_store("action_status", $status);
 
 if($status == null){
     apcu_store("message", "sistem hatası");
-    header("Location:views/index.php");
+    header("Location:../../views/index.php");
     exit;
 }
 
 apcu_store("message", $message);
-header("Location:views/index.php");
+header("Location:../../views/index.php");

@@ -1,6 +1,7 @@
 <?php
 
 include 'header.php';
+include "check_hd_status.php";
 
 include "../../api_routes/curl_api.php";
 
@@ -20,7 +21,7 @@ $hdGallery = $response["data"];
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                     <div class="x_title">
-                        <h2>Employee Info
+                        <h2>Gallery Update
                             <small>
 
                                 <b style="color:<?php echo (apcu_fetch("action_status") == "ok") ? 'green' : 'red' ?>;">

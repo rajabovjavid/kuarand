@@ -1,6 +1,7 @@
 <?php
 
 include 'header.php';
+include "check_hd_status.php";
 
 $user_data = apcu_fetch("user_data");
 ?>

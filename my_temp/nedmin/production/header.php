@@ -1,34 +1,20 @@
 <?php
 ob_start();
 session_start();
+
 include '../netting/baglan.php';
 include 'fonksiyon.php';
-
-################################## diğer database ################################
-//Belirli veriyi seçme işlemi
-$ayarsor = $db->prepare("SELECT * FROM ayar where ayar_id=:id");
-$ayarsor->execute(array(
-    'id' => 0
-));
-$ayarcek = $ayarsor->fetch(PDO::FETCH_ASSOC);
-##################################################################################
-
 
 if (!isset($_SESSION["email"])) {
     Header("Location:login.php");
     exit;
 }
 
-if (!$_SESSION["auth"]==1 && !$_SESSION["auth"]==2){
+if (!$_SESSION["auth"] == 1 && !$_SESSION["auth"] == 2) {
     apcu_store("message", "panel kullanıcısı değilsiniz");
     Header("Location:login.php");
     exit;
 }
-
-/*if (apcu_fetch("is_panel_user") != "1") {
-    Header("Location:login.php?durum=izinsiz");
-    exit;
-}*/
 
 $user_data = apcu_fetch("user_data");
 
@@ -95,7 +81,7 @@ $user_data = apcu_fetch("user_data");
                         <!--                        <img src="images/img.jpg" alt="..." class="img-circle profile_img">-->
                     </div>
                     <div class="profile_info">
-                        <h2><?php echo (apcu_fetch("panel_type") == "admin")?$user_data['adminName']:$user_data['hdName'] ?></h2>
+                        <h2><?php echo ($_SESSION["auth"] == 1) ? $user_data['adminName'] : $user_data['hdName'] ?></h2>
                     </div>
                 </div>
                 <!-- /menu profile quick info -->
@@ -107,46 +93,56 @@ $user_data = apcu_fetch("user_data");
                     <div class="menu_section">
                         <h3>General</h3>
                         <ul class="nav side-menu">
-                            <li><a href="index.php"><i class="fa fa-home"></i> Main Page </a></li>
-                            <!--<li><a><i class="fa fa-cogs"></i> Site Ayarları <span class="fa fa-cogs"></span></a>
-                                <ul class="nav child_menu">
-                                    <li><a href="genel-ayar.php">Genel Ayarlar</a></li>
-                                    <li><a href="iletisim-ayarlar.php">İletişim Ayarlar</a></li>
-                                    <li><a href="api-ayarlar.php">Api Ayarlar</a></li>
-                                    <li><a href="sosyal-ayar.php">Sosyal Ayarlar</a></li>
-                                    <li><a href="mail-ayar.php">Mail Ayarlar</a></li>
-                                </ul>
-                            </li>-->
+                            <?php if ($_SESSION["auth"] == 2) { ?>
+                                <li><a href="index.php"><i class="fa fa-home"></i> Main Page </a></li>
 
-                            <li><a href="hd_info.php"><i class="fa fa-info"></i> Hairdresser Info </a></li>
+                                <li><a href="hd_info.php"><i class="fa fa-info"></i> Hairdresser Info </a></li>
+                                <?php if ($user_data["hdStatus"] != 0 && $user_data["hdStatus"] != -1) { ?>
+                                    <li><a href="hd_address.php"><i class="fa fa-info"></i> Hairdresser Address </a>
+                                    </li>
 
-                            <li><a href="hd_address.php"><i class="fa fa-info"></i> Hairdresser Address </a></li>
+                                    <li><a href="hd_gallery.php"><i class="fa fa-user"></i> Gallery </a></li>
 
-                            <li><a href="hd_gallery.php"><i class="fa fa-user"></i> Gallery </a></li>
+                                    <li><a href="employees.php"><i class="fa fa-user"></i> Employees </a></li>
 
-                            <li><a href="employees.php"><i class="fa fa-user"></i> Employees </a></li>
+                                    <li><a href="hd_reservations.php"><i class="fa fa-shopping-basket"></i> Reservations
+                                        </a></li>
 
-                            <li><a href="hd_reservations.php"><i class="fa fa-shopping-basket"></i> Reservations </a></li>
+                                    <li><a href="hd_work_hour.php"><i class="fa fa-info"></i> Hairdresser Work Hour </a>
+                                    </li>
 
-                            <li><a href="hd_work_hour.php"><i class="fa fa-info"></i> Hairdresser Work Hour </a></li>
+                                    <li><a href="services.php"><i class="fa fa-user"></i> Services </a></li>
 
-                            <li><a href="services.php"><i class="fa fa-user"></i> Services </a></li>
+                                    <!--                                <li><a href="urun.php"><i class="fa fa-shopping-basket"></i> Ürünler </a></li>-->
 
-                            <li><a href="urun.php"><i class="fa fa-shopping-basket"></i> Ürünler </a></li>
+                                    <!--                                <li><a href="menu.php"><i class="fa fa-list"></i> Menüler </a></li>-->
+
+                                    <!--                                <li><a href="kategori.php"><i class="fa fa-list"></i> Kategoriler </a></li>-->
+
+                                    <!--                                <li><a href="slider.php"><i class="fa fa-image"></i> Slider </a></li>-->
+
+                                    <!--                                <li><a href="yorum.php"><i class="fa fa-comments"></i> Yorumlar </a></li>-->
+
+                                    <!--                                <li><a href="banka.php"><i class="fa fa-bank"></i> Bankalar </a></li>-->
+
+                                    <li><a href="hd_contacts.php"><i class="fa fa-info"></i> Hairdresser Contacts </a>
+                                    </li>
+                                <?php } ?>
 
 
-                            <li><a href="menu.php"><i class="fa fa-list"></i> Menüler </a></li>
+                            <?php } elseif ($_SESSION["auth"] == 1) { ?>
 
-                            <li><a href="kategori.php"><i class="fa fa-list"></i> Kategoriler </a></li>
+                                <li><a href="index.php"><i class="fa fa-home"></i> Main Page </a></li>
 
-                            <li><a href="slider.php"><i class="fa fa-image"></i> Slider </a></li>
+                                <li><a href="admin_info.php"><i class="fa fa-info"></i> Admin Info </a></li>
+                                <?php if ($user_data["adminType"] == 1) { ?>
+                                    <li><a href="admins.php"><i class="fa fa-info"></i> Admins </a></li>
+                                <?php } ?>
+                                <li><a href="hairdressers.php"><i class="fa fa-info"></i> Hairdressers </a></li>
 
-                            <li><a href="yorum.php"><i class="fa fa-comments"></i> Yorumlar </a></li>
+                                <!--                                <li><a href=""><i class="fa fa-info"></i> Reservations </a></li>-->
 
-                            <li><a href="banka.php"><i class="fa fa-bank"></i> Bankalar </a></li>
-
-                            <li><a href="hd_contacts.php"><i class="fa fa-info"></i> Hairdresser Contacts </a></li>
-
+                            <?php } ?>
                         </ul>
                     </div>
 
@@ -185,7 +181,7 @@ $user_data = apcu_fetch("user_data");
                         <li class="">
                             <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown"
                                aria-expanded="false">
-                                <li><a href="logout.php"><i class="fa fa-sign-out pull-right"></i> Güvenli Çıkış</a>
+                        <li><a href="logout.php"><i class="fa fa-sign-out pull-right"></i> Güvenli Çıkış</a>
                             </a>
                         </li>
 
