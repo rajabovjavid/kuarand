@@ -14,7 +14,7 @@ include "check_hd_status.php";
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                     <div class="x_title">
-                        <h2>Ürün Düzenleme <small>,
+                        <h2>Add Work Hour<small>,
 
                                 <?php
 
@@ -87,7 +87,7 @@ include "check_hd_status.php";
                             <div class="ln_solid"></div>
                             <div class="form-group">
                                 <div align="right" class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                                    <button type="submit" name="hdworkhour_add" class="btn btn-success">Ekle
+                                    <button type="submit" name="hdworkhour_add" class="btn btn-success">Add
                                     </button>
                                 </div>
                             </div>

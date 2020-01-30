@@ -40,7 +40,7 @@ $status = $response["status"];
                         <div class="clearfix"></div>
                         <div align="right">
                             <a href="add_hd_photo.php">
-                                <button class="btn btn-success btn-xs"> Yeni Ekle</button>
+                                <button class="btn btn-success btn-xs"> Add new</button>
                             </a>
                         </div>
                     </div>
@@ -77,14 +77,14 @@ $status = $response["status"];
                                     <td>
                                         <center>
                                             <a href="gallery_update.php?gallery_id=<?php echo $hdGallery["hdGalleryId"]; ?>">
-                                                <button class="btn btn-primary btn-xs">Düzenle</button>
+                                                <button class="btn btn-primary btn-xs">Edit</button>
                                             </a>
                                         </center>
                                     </td>
                                     <td>
                                         <center>
                                             <a href="../../api_routes/panel_routes/delete_gallery_route.php?gallery_id=<?php echo $hdGallery["hdGalleryId"]?>">
-                                                <button class="btn btn-danger btn-xs">Sil</button>
+                                                <button class="btn btn-danger btn-xs">Delete</button>
                                             </a>
                                         </center>
                                     </td>

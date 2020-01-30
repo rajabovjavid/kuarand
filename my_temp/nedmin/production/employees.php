@@ -42,7 +42,7 @@ $status = $response["status"];
                         <div class="clearfix"></div>
                         <div align="right">
                             <a href="add_employee.php">
-                                <button class="btn btn-success btn-xs"> Yeni Ekle</button>
+                                <button class="btn btn-success btn-xs"> Add new</button>
                             </a>
                         </div>
                     </div>
@@ -73,18 +73,18 @@ $status = $response["status"];
                                 <tr>
                                     <td><?php echo $employee["employeeId"] ?></td>
                                     <td><?php echo $employee["employeeName"] ?></td>
-                                    <td><?php echo ($employee["employeeGender"]=='1')?"erkek":'kadın';?></td>
+                                    <td><?php echo ($employee["employeeGender"]=='1')?"Male":'Female';?></td>
                                     <td>
                                         <center>
                                             <a href="employee_update.php?emp_id=<?php echo $employee["employeeId"]; ?>">
-                                                <button class="btn btn-primary btn-xs">Düzenle</button>
+                                                <button class="btn btn-primary btn-xs">Edit</button>
                                             </a>
                                         </center>
                                     </td>
                                     <td>
                                         <center>
                                             <a href="../../api_routes/panel_routes/delete_employee_rout.php?emp_id=<?php echo $employee['employeeId']?>">
-                                                <button class="btn btn-danger btn-xs">Sil</button>
+                                                <button class="btn btn-danger btn-xs">Delete</button>
                                             </a>
                                         </center>
                                     </td>

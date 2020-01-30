@@ -14,7 +14,7 @@ include 'header.php';
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                     <div class="x_title">
-                        <h2>Kuaför Bilgileri
+                        <h2>Hairdresser Info
                             <small>
 
                                 <b style="color:<?php echo (apcu_fetch("action_status") == "ok") ? 'green' : 'red' ?>;">
@@ -40,7 +40,7 @@ include 'header.php';
                               class="form-horizontal form-label-left">
 
                             <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Kuaför İsmi
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Hairdresser Name
                                     <span class="required">*</span>
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
@@ -51,7 +51,7 @@ include 'header.php';
                             </div>
 
                             <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Kuaför Şifre
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Hairdresser Password
                                     <span
                                             class="required">*</span>
                                 </label>
@@ -64,7 +64,7 @@ include 'header.php';
                             </div>
 
                             <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Kuaför
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Hairdresser
                                     Email</label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <input type="text" id="first-name" name="hdEmail" readonly
@@ -74,25 +74,25 @@ include 'header.php';
                             </div>
 
                             <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Kuaför Type
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Hairdresser Type
                                     <span
                                             class="required">*</span>
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <select id="first" class="form-control" name="hdType" required="">
                                         <option value="0" <?php if ($user_data['hdType'] == 0) echo 'selected="selected"'; ?>>
-                                            Kadın Kuaförü
+                                            For woman
                                         </option>
                                         <option value="1" <?php if ($user_data['hdType'] == 1) echo 'selected="selected"'; ?>>
-                                            Erkek Kuaförü
+                                            For man
                                         </option>
                                     </select>
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Kuaför
-                                    Durum</label>
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Hairdresser
+                                    Status</label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <input type="text" id="first-name" name="status_text" readonly
                                            value="<?php
@@ -110,8 +110,8 @@ include 'header.php';
                             </div>
 
                             <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Kuaför
-                                    Puanı</label>
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Hairdresser
+                                    Rating</label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <input type="text" id="first-name" name="rating" readonly
                                            value="<?php echo $user_data['hdRating'] ?>" required="required"
@@ -123,7 +123,7 @@ include 'header.php';
                             <div class="ln_solid"></div>
                             <div class="form-group">
                                 <div align="right" class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                                    <button type="submit" name="updateHairdresser" class="btn btn-success">Güncelle
+                                    <button type="submit" name="updateHairdresser" class="btn btn-success">Update
                                     </button>
                                 </div>
                             </div>
