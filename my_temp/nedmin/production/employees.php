@@ -73,11 +73,11 @@ $status = $response["status"];
                                 <tr>
                                     <td><?php echo $employee["employeeId"] ?></td>
                                     <td><?php echo $employee["employeeName"] ?></td>
-                                    <td><?php echo ($employee["employeeGender"]=='1')?"erkek":'kadın';?></td>
+                                    <td><?php echo ($employee["employeeGender"]=='1')?"Male":'Female';?></td>
                                     <td>
                                         <center>
                                             <a href="employee_update.php?emp_id=<?php echo $employee["employeeId"]; ?>">
-                                                <button class="btn btn-primary btn-xs">Düzenle</button>
+                                                <button class="btn btn-primary btn-xs">Edit</button>
                                             </a>
                                         </center>
                                     </td>

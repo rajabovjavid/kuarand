@@ -54,7 +54,7 @@ $employee = $response["data"];
                             </div>
 
                             <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Resim Seç<span class="required">*</span>
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Choose a photo<span class="required">*</span>
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <input type="file" id="image"  name="image"  class="form-control col-md-7 col-xs-12" />
@@ -80,10 +80,10 @@ $employee = $response["data"];
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <select id="heard" class="form-control" name="employee_gender" required="">
                                         <option value="0" <?php if ($employee['employeeGender'] == 0) echo 'selected="selected"'; ?>>
-                                            Kadın
+                                            Female
                                         </option>
                                         <option value="1" <?php if ($employee['employeeGender'] == 1) echo 'selected="selected"'; ?>>
-                                            Erkek
+                                            Male
                                         </option>
                                     </select>
                                 </div>
@@ -92,7 +92,7 @@ $employee = $response["data"];
                             <div class="ln_solid"></div>
                             <div class="form-group">
                                 <div align="right" class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                                    <button type="submit" name="employee_update" class="btn btn-success">Güncelle
+                                    <button type="submit" name="employee_update" class="btn btn-success">Update
                                     </button>
                                 </div>
                             </div>

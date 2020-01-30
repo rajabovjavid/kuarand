@@ -46,7 +46,7 @@ include "check_hd_status.php";
                             <input type="hidden" name="hd_id" value="<?php echo apcu_fetch("user_data")["hdId"]; ?>">
 
                             <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Resim Seç<span class="required">*</span>
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Choose a photo<span class="required">*</span>
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <input type="file" id="image"  name="image"  class="form-control col-md-7 col-xs-12" required="required"/>
@@ -71,8 +71,8 @@ include "check_hd_status.php";
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <select id="heard" class="form-control" name="employee_gender" required="">
-                                        <option value="0">Kadın</option>
-                                        <option value="1">Erkek</option>
+                                        <option value="0">Female</option>
+                                        <option value="1">Male</option>
                                     </select>
                                 </div>
                             </div>
@@ -81,7 +81,7 @@ include "check_hd_status.php";
                             <div class="form-group">
                                 <div align="right" class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
                                     <button type="submit" name="insert_image" id="insert_image" class="btn btn-success">
-                                        Ekle
+                                        Add
                                     </button>
                                 </div>
                             </div>

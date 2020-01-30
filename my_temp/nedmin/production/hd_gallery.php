@@ -77,7 +77,7 @@ $status = $response["status"];
                                     <td>
                                         <center>
                                             <a href="gallery_update.php?gallery_id=<?php echo $hdGallery["hdGalleryId"]; ?>">
-                                                <button class="btn btn-primary btn-xs">Düzenle</button>
+                                                <button class="btn btn-primary btn-xs">Edit</button>
                                             </a>
                                         </center>
                                     </td>

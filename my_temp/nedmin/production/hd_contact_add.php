@@ -72,7 +72,7 @@ $user_data = apcu_fetch("user_data");
                             <div class="ln_solid"></div>
                             <div class="form-group">
                                 <div align="right" class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                                    <button type="submit" name="hdContact_add" class="btn btn-success">Ekle
+                                    <button type="submit" name="hdContact_add" class="btn btn-success">Add
                                     </button>
                                 </div>
                             </div>

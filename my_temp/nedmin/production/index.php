@@ -15,10 +15,10 @@ include 'header.php';
                     <div class="x_panel">
                         <div class="x_title">
                             <?php if ($_SESSION["auth"]==1) { ?>
-                                <h2>Admin Panel <small> Panele Hoşgeldiniz.</small></h2>
+                                <h2>Admin Panel <small> Welcome to Panel.</small></h2>
                             <?php }
                             elseif ($_SESSION["auth"]==2) { ?>
-                                <h2>Kuaför Panel <small> Panele Hoşgeldiniz.</small></h2>
+                                <h2>Kuaför Panel <small> Welcome to Panel.</small></h2>
                             <?php } ?>
                             <ul class="nav navbar-right panel_toolbox">
                                 <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
