@@ -50,13 +50,13 @@
                     <div>
                         <select name="panel_type" required>
                             <option value="0">Admin</option>
-                            <option value="1">Kuaför</option>
+                            <option value="1">Hairdresser</option>
                         </select>
                     </div>
                     <br>
                     <div>
                         <button style="width: 100%; background-color: #73879C; color:white;" type="submit"
-                                name="admingiris" class="btn btn-default"> Giriş Yap
+                                name="admingiris" class="btn btn-default"> Login
                         </button>
                     </div>
 
