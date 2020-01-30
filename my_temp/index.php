@@ -59,8 +59,8 @@ $status = $response["status"];
         <div class="background_image" style="background-image:url(images/menu.jpg)"></div>
         <div class="menu_content d-flex flex-column align-items-center justify-content-center">
             <ul class="menu_nav_list text-center">
-                <li><a href="index.php">Anasayfa</a></li>
-                <li><a href="">Salonlar</a></li>
+                <li><a href="index.php">Home</a></li>
+                <li><a href="">Hairdressers</a></li>
                 <li><a href="">Hakkımızda</a></li>
                 <li><a href="">İletişim</a></li>
             </ul>

@@ -28,15 +28,15 @@ if(isset($_SESSION["email"])){
                         <ul class="d-flex flex-row align-items-center justify-content-start">
 
                             <?php if($comes_from_page == "index") { ?>
-                                <li class="active"><a href="">Anasayfa</a></li>
+                                <li class="active"><a href="">Home</a></li>
                             <?php } else { ?>
-                                <li><a href=<?php echo $index_url ?>>Anasayfa</a></li>
+                                <li><a href=<?php echo $index_url ?>>Home</a></li>
                             <?php } ?>
 
                             <?php if($comes_from_page == "list_hairdressers") { ?>
-                            <li class="active"><a href="">Salonlar</a></li>
+                            <li class="active"><a href="">Hairdressers</a></li>
                             <?php } else { ?>
-                            <li><a href="views/list_hairdressers.php">Salonlar</a></li>
+                            <li><a href="views/list_hairdressers.php">Hairdressers</a></li>
                             <?php } ?>
 
                             <li><a href="">Hakkımızda</a></li>
