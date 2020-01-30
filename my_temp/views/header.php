@@ -71,12 +71,12 @@ if (isset($_SESSION["email"])) {
                         <nav class="main_nav">
                             <ul class="d-flex flex-row align-items-center justify-content-start">
 
-                                <li class="<?php if($comes_from=="index") echo "active"; ?>"><a href="index.php">Anasayfa</a></li>
+                                <li class="<?php if($comes_from=="index") echo "active"; ?>"><a href="index.php">Homepage</a></li>
 
-                                <li class="<?php if($comes_from=="list_hairdressers") echo "active"; ?>"><a href="list_hairdressers.php">Salonlar</a></li>
+                                <li class="<?php if($comes_from=="list_hairdressers") echo "active"; ?>"><a href="list_hairdressers.php">Hairdressers</a></li>
 
-                                <li><a href="">Hakkımızda</a></li>
-                                <li><a href="">İletişim</a></li>
+
+
                             </ul>
                         </nav>
 
