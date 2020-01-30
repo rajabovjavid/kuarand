@@ -41,7 +41,7 @@ $status = $response["status"];
                         <div class="clearfix"></div>
                         <div align="right">
                             <a href="hd_contact_add.php">
-                                <button class="btn btn-success btn-xs"> Yeni Ekle</button>
+                                <button class="btn btn-success btn-xs"> Add new</button>
                             </a>
                         </div>
                     </div>
