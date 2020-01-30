@@ -41,7 +41,7 @@ $urunsor->execute();
             <div class="clearfix"></div>
 
             <div align="right">
-              <a href="urun-ekle.php"><button class="btn btn-success btn-xs"> Yeni Ekle</button></a>
+              <a href="urun-ekle.php"><button class="btn btn-success btn-xs"> Add new</button></a>
 
             </div>
           </div>

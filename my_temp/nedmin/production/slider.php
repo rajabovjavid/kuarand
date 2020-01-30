@@ -41,7 +41,7 @@ $slidersor->execute();
             <div class="clearfix"></div>
 
             <div align="right">
-              <a href="slider-ekle.php"><button class="btn btn-success btn-xs"> Yeni Ekle</button></a>
+              <a href="slider-ekle.php"><button class="btn btn-success btn-xs"> Add new</button></a>
 
             </div>
           </div>
@@ -111,7 +111,7 @@ $slidersor->execute();
 
 
             <td><center><a href="slider-duzenle.php?slider_id=<?php echo $slidercek['slider_id']; ?>"><button class="btn btn-primary btn-xs">Düzenle</button></a></center></td>
-            <td><center><a href="../netting/islem.php?slider_id=<?php echo $slidercek['slider_id']; ?>&slidersil=ok&slider_resimyol=<?php echo $slidercek['slider_resimyol'] ?>"><button class="btn btn-danger btn-xs">Sil</button></a></center></td>
+            <td><center><a href="../netting/islem.php?slider_id=<?php echo $slidercek['slider_id']; ?>&slidersil=ok&slider_resimyol=<?php echo $slidercek['slider_resimyol'] ?>"><button class="btn btn-danger btn-xs">Delete</button></a></center></td>
           </tr>
 
 

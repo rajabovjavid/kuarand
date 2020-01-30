@@ -41,7 +41,7 @@ $bankasor->execute();
             <div class="clearfix"></div>
 
             <div align="right">
-              <a href="banka-ekle.php"><button class="btn btn-success btn-xs"> Yeni Ekle</button></a>
+              <a href="banka-ekle.php"><button class="btn btn-success btn-xs"> Add new</button></a>
 
             </div>
           </div>

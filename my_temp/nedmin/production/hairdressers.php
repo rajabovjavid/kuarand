@@ -99,7 +99,7 @@ $hds = $response["data"];
                                     <td>
                                         <center>
                                             <a href="../../api_routes/panel_routes/delete_hd_route.php?hd_email=<?php echo $hd['hdEmail']; ?>">
-                                                <button class="btn btn-danger btn-xs">Sil</button>
+                                                <button class="btn btn-danger btn-xs">Delete</button>
                                             </a></center>
                                     </td>
                                 </tr>

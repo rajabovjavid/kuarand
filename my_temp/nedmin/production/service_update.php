@@ -24,9 +24,9 @@ $hairdresserService = $response["data"];
                         <h2>Service Info
                             <small>
 
-                                <b style="color:<?php echo (apc_fetch("action_status") == "ok") ? 'green' : 'red' ?>;">
+                                <b style="color:<?php echo (apcu_fetch("action_status") == "ok") ? 'green' : 'red' ?>;">
                                     <?php
-                                    echo apc_fetch("message");
+                                    echo apcu_fetch("message");
                                     apcu_delete("message");
                                     ?>
                                 </b>
@@ -99,7 +99,7 @@ $hairdresserService = $response["data"];
                             <div class="ln_solid"></div>
                             <div class="form-group">
                                 <div align="right" class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-                                    <button type="submit" name="ser_update" class="btn btn-success">Güncelle
+                                    <button type="submit" name="ser_update" class="btn btn-success">Update
                                     </button>
                                 </div>
                             </div>

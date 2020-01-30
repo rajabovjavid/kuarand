@@ -41,7 +41,7 @@ $kategorisor->execute();
             <div class="clearfix"></div>
 
             <div align="right">
-              <a href="kategori-ekle.php"><button class="btn btn-success btn-xs"> Yeni Ekle</button></a>
+              <a href="kategori-ekle.php"><button class="btn btn-success btn-xs"> Add new</button></a>
 
             </div>
           </div>

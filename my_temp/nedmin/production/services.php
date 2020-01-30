@@ -41,7 +41,7 @@ $status = $response["status"];
                         <div class="clearfix"></div>
                         <div align="right">
                             <a href="all_services.php">
-                                <button class="btn btn-success btn-xs"> Yeni Servis Seç</button>
+                                <button class="btn btn-success btn-xs"> Choose New Service</button>
                             </a>
                         </div>
                     </div>

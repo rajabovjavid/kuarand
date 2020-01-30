@@ -59,7 +59,7 @@ include "check_admin_auth.php";
                                 </label>
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <input type="password" id="first-name" name="admin_password"
-                                           placeholder="şifrenizi güncellemek istemiyorsanız boş bırakın"
+                                           placeholder="leave it empty, if you don't want to change your password"
                                            value=""
                                            class="form-control col-md-7 col-xs-12">
                                 </div>
