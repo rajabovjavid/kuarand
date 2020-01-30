@@ -18,7 +18,7 @@ include 'header.php';
                                 <h2>Admin Panel <small> Welcome to Panel.</small></h2>
                             <?php }
                             elseif ($_SESSION["auth"]==2) { ?>
-                                <h2>Kuaför Panel <small> Welcome to Panel.</small></h2>
+                                <h2>Hairdresser Panel <small> Welcome to Panel.</small></h2>
                             <?php } ?>
                             <ul class="nav navbar-right panel_toolbox">
                                 <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
