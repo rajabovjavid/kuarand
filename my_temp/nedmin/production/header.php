@@ -30,7 +30,7 @@ $user_data = apcu_fetch("user_data");
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Joy Akademi Php Eğitim Sürümü</title>
+    <title>Kuarand Panel</title>
 
     <!-- Bootstrap -->
     <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
