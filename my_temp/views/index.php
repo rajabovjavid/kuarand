@@ -50,18 +50,18 @@ $status = $response["status"];
 
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                                 <input type="text" name="city"
-                                                       value="" required="required"
+                                                       value=""
                                                        class="form-control col-md-7 col-xs-12" placeholder="City">
                                             </div>
 
                                             <div class="col-md-6 col-sm-6 col-xs-12">
                                                 <input type="text" name="region"
-                                                       value="" required="required"
+                                                       value=""
                                                        class="form-control col-md-7 col-xs-12" placeholder="Region">
                                             </div>
 
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <select id="heard" class="form-control" name="ser_name" required="">
+                                                <select id="heard" class="form-control" name="ser_name" >
                                                     <?php
                                                     foreach ($response["data"] as $service) { ?>
                                                         <option value=<?php echo $service["serName"] ?>> <?php echo $service["serName"] ?> </option>
@@ -70,7 +70,7 @@ $status = $response["status"];
                                             </div>
 
                                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <select id="heard" class="form-control" name="hd_type" required="">
+                                                <select id="heard" class="form-control" name="hd_type">
                                                     <option value=0>For Woman</option>
                                                     <option value=1>For Man</option>
                                                 </select>
