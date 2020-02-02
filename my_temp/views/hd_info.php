@@ -95,8 +95,17 @@ $hd = $response["data"];
                                     </li>
                                     <li role="presentation" class=""><a href="#tab_content3" role="tab"
                                                                         id="profile-tab2" data-toggle="tab"
-                                                                        aria-expanded="false">Profile</a>
+                                                                        aria-expanded="false">Work Hours</a>
                                     </li>
+
+                                    <li role="presentation" class=""><a href="#tab_content4" role="tab"
+                                                                        id="profile-tab2" data-toggle="tab"
+                                                                        aria-expanded="false">Reservation</a>
+                                    </li>
+
+
+
+
                                 </ul>
                                 <div id="myTabContent" class="tab-content">
                                     <div role="tabpanel" class="tab-pane fade active in" id="tab_content1"
@@ -197,6 +206,101 @@ $hd = $response["data"];
                                     </div>
                                     <div role="tabpanel" class="tab-pane fade" id="tab_content3"
                                          aria-labelledby="profile-tab">
+
+                                        <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap"
+                                               cellspacing="0" width="100%">
+                                            <thead>
+                                            <tr>
+                                                <th>Day</th>
+                                                <th>Start Hour</th>
+                                                <th>Finish Hour</th>
+                                            </tr>
+                                            </thead>
+
+                                            <tbody>
+
+                                            <?php
+
+                                            foreach ( $hd["hdWorkHours"] as $hdWorkHour ) { ?>
+
+
+                                                <tr>
+                                                    <td><?php
+
+                                                        if ($hdWorkHour['day'] == 0) echo 'Monday';
+                                                        elseif ($hdWorkHour['day'] == 1) echo 'Tuesday';
+                                                        elseif ($hdWorkHour['day'] == 2) echo 'Wednesday';
+                                                        elseif ($hdWorkHour['day'] == 3) echo 'Thursday';
+                                                        elseif ($hdWorkHour['day'] == 4) echo 'Friday';
+                                                        elseif ($hdWorkHour['day'] == 5) echo 'Saturday';
+                                                        elseif ($hdWorkHour['day'] == 6) echo 'Sunday';
+                                                        ?>
+
+                                                    </td>
+                                                    <td><?php echo $hdWorkHour['startHour'] ?></td>
+                                                    <td><?php echo $hdWorkHour['finishHour'] ?></td>
+                                                </tr>
+
+
+                                            <?php }
+
+                                            ?>
+
+
+                                            </tbody>
+                                        </table>
+
+
+
+
+
+
+
+
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane fade" id="tab_content4"
+                                         aria-labelledby="profile-tab">
+
+                                        <table id="datatable-responsive" class="table table-striped table-bordered dt-responsive nowrap"
+                                               cellspacing="0" width="100%">
+                                            <thead>
+                                            <tr>
+                                                <th>Reservation Date</th>
+                                                <th>Start Time</th>
+                                                <th>Finish Time</th>
+                                            </tr>
+                                            </thead>
+
+                                            <tbody>
+
+                                            <?php
+
+                                            foreach ( $hd["hdReservations"] as $hdReservation ) {
+                                                $dateTime = explode(" ", $hdReservation["reservationDate"]);
+                                                $endTime = strtotime("+".$hdReservation["serMinTime"]." minutes", strtotime($dateTime[1]));
+                                                ?>
+
+
+                                                <tr>
+                                                    <td> <?php echo $dateTime[0] ?> </td>
+                                                    <td> <?php echo $dateTime[1] ?></td>
+                                                    <td> <?php echo date("H:i:s",$endTime) ?> </td>
+                                                </tr>
+
+
+                                            <?php }
+
+                                            ?>
+
+
+                                            </tbody>
+                                        </table>
+
+
+
+
+
+
 
 
                                     </div>
