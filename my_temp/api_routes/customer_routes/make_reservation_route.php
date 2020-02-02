@@ -9,6 +9,13 @@ if (!isset($_SESSION["email"])){
     exit;
 }
 
+$today = date("Y-m-d H:i:s");
+if($today>$_POST["reserv_date"]){
+    apcu_store("message", "rezervasyon yapılamadı, eski bir tarih girdiniz");
+    header("Location:../../views/index.php");
+    exit;
+}
+
 $data_array = array(
     "hd_id" => $_POST['hd_id'],
     "ser_id" => $_POST['ser_id'],
