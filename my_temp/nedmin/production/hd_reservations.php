@@ -32,24 +32,16 @@ $urunsor->execute();
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                     <div class="x_title">
-                        <h2>List of Reservations<small>,
-
-                                <?php
-
-                                if ($_GET['durum'] == "ok") { ?>
-
-                                    <b style="color:green;">İşlem Başarılı...</b>
-
-                                <?php } elseif ($_GET['durum'] == "no") { ?>
-
-                                    <b style="color:red;">İşlem Başarısız...</b>
-
-                                <?php }
-
-                                ?>
-
-
-                            </small></h2>
+                        <h2>List of Reservations
+                            <small>
+                                <b style="color:<?php echo (apcu_fetch("action_status") == "ok") ? 'green' : 'red' ?>;">
+                                    <?php
+                                    echo apcu_fetch("message");
+                                    apcu_delete("message");
+                                    ?>
+                                </b>
+                            </small>
+                        </h2>
 
                         <div class="clearfix"></div>
                     </div>
