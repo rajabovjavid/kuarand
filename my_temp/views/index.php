@@ -36,51 +36,130 @@ $status = $response["status"];
                     <div class="col">
                         <div class="search_box_container d-flex flex-row align-items-center justify-content-start">
                             <div class="search_form_container">
-                                <form action="../api_routes/customer_routes/search_hairdressers_results_route.php"
-                                      id="search_form" class="search_form" method="POST">
-                                    <div class="d-flex flex-lg-row flex-column align-items-center justify-content-start">
-                                        <ul class="search_form_list d-flex flex-row align-items-center justify-content-start flex-wrap">
 
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input type="text" name="hd_name"
-                                                       value=""
-                                                       class="form-control col-md-7 col-xs-12"
-                                                       placeholder="Hairdresser Name">
-                                            </div>
+                                <div class="" role="tabpanel" data-example-id="togglable-tabs">
+                                    <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+                                        <li role="presentation" class="active"><a href="#tab_content1" id="home-tab"
+                                                                                  role="tab" data-toggle="tab"
+                                                                                  aria-expanded="true">Services</a>
+                                        </li>
+                                        <li role="presentation" class=""><a href="#tab_content2" role="tab"
+                                                                            id="profile-tab" data-toggle="tab"
+                                                                            aria-expanded="false">Type</a>
+                                        </li>
+                                        <li role="presentation" class=""><a href="#tab_content3" role="tab"
+                                                                            id="profile-tab2" data-toggle="tab"
+                                                                            aria-expanded="false">Hairdresser Name</a>
+                                        </li>
 
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input type="text" name="city"
-                                                       value=""
-                                                       class="form-control col-md-7 col-xs-12" placeholder="City">
-                                            </div>
+                                    </ul>
+                                    <div id="myTabContent" class="tab-content">
+                                        <div role="tabpanel" class="tab-pane fade active in" id="tab_content1"
+                                             aria-labelledby="home-tab">
+                                            <form action="../api_routes/customer_routes/search_hairdressers_results_route.php"
+                                                  id="search_form" class="search_form" method="POST">
+                                                <div class="d-flex flex-lg-row flex-column align-items-center justify-content-start">
+                                                    <ul class="search_form_list d-flex flex-row align-items-center justify-content-start flex-wrap">
+                                                        <div class="col-md-6 col-sm-6 col-xl-12">
+                                                            <input type="text" name="city"
+                                                                   value=""
+                                                                   class="form-control col-md-7 col-xs-12"
+                                                                   placeholder="City">
+                                                        </div>
+                                                        <hr>
 
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <input type="text" name="region"
-                                                       value=""
-                                                       class="form-control col-md-7 col-xs-12" placeholder="Region">
-                                            </div>
+                                                        <div class="col-md-6 col-sm-6 col-xl-12">
+                                                            <input type="text" name="region"
+                                                                   value=""
+                                                                   class="form-control col-md-7 col-xs-12"
+                                                                   placeholder="Region">
+                                                        </div>
+                                                        <hr>
 
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <select id="heard" class="form-control" name="ser_name" >
-                                                    <?php
-                                                    foreach ($response["data"] as $service) { ?>
-                                                        <option value=<?php echo $service["serName"] ?>> <?php echo $service["serName"] ?> </option>
-                                                    <?php } ?>
-                                                </select>
-                                            </div>
+                                                        <div class="col-md-6 col-sm-6 col-xl-12">
+                                                            <select id="heard" class="form-control" name="ser_name">
+                                                                <?php
+                                                                foreach ($response["data"] as $service) { ?>
+                                                                    <option value=<?php echo $service["serName"] ?>> <?php echo $service["serName"] ?> </option>
+                                                                <?php } ?>
+                                                            </select>
+                                                        </div>
+                                                    </ul>
+                                                    <button class="search_button">search</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div role="tabpanel" class="tab-pane fade" id="tab_content2"
+                                             aria-labelledby="profile-tab">
+                                            <form action="../api_routes/customer_routes/search_hairdressers_results_route.php"
+                                                  id="search_form" class="search_form" method="POST">
+                                                <div class="d-flex flex-lg-row flex-column align-items-center justify-content-start">
+                                                    <ul class="search_form_list d-flex flex-row align-items-center justify-content-start flex-wrap">
+                                                        <div class="col-md-6 col-sm-6 col-xl-12">
+                                                            <input type="text" name="city"
+                                                                   value=""
+                                                                   class="form-control col-md-7 col-xs-12"
+                                                                   placeholder="City">
+                                                        </div>
+                                                        <hr>
 
-                                            <div class="col-md-6 col-sm-6 col-xs-12">
-                                                <select id="heard" class="form-control" name="hd_type">
-                                                    <option value=0>For Woman</option>
-                                                    <option value=1>For Man</option>
-                                                </select>
-                                            </div>
+                                                        <div class="col-md-6 col-sm-6 col-xl-12">
+                                                            <input type="text" name="region"
+                                                                   value=""
+                                                                   class="form-control col-md-7 col-xs-12"
+                                                                   placeholder="Region">
+                                                        </div>
+                                                        <hr>
 
-                                            </li>
-                                        </ul>
-                                        <button class="search_button">search</button>
+                                                        <div class="col-md-6 col-sm-6 col-xl-12">
+                                                            <select id="heard" class="form-control" name="hd_type">
+                                                                <option value=0>For Woman</option>
+                                                                <option value=1>For Man</option>
+                                                            </select>
+                                                        </div>
+                                                    </ul>
+                                                    <button class="search_button">search</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div role="tabpanel" class="tab-pane fade" id="tab_content3"
+                                             aria-labelledby="profile-tab">
+                                            <form action="../api_routes/customer_routes/search_hairdressers_results_route.php"
+                                                  id="search_form" class="search_form" method="POST">
+                                                <div class="d-flex flex-lg-row flex-column align-items-center justify-content-start">
+                                                    <ul class="search_form_list d-flex flex-row align-items-center justify-content-start flex-wrap">
+
+                                                        <div class="col-md-6 col-sm-6 col-xl-12">
+                                                            <input type="text" name="city"
+                                                                   value=""
+                                                                   class="form-control col-md-7 col-xs-12"
+                                                                   placeholder="City">
+                                                        </div>
+                                                        <hr>
+
+                                                        <div class="col-md-6 col-sm-6 col-xl-12">
+                                                            <input type="text" name="region"
+                                                                   value=""
+                                                                   class="form-control col-md-7 col-xs-12"
+                                                                   placeholder="Region">
+                                                        </div>
+                                                        <hr>
+
+                                                        <div class="col-md-6 col-sm-6 col-xl-12">
+                                                            <input type="text" name="hd_name"
+                                                                   value=""
+                                                                   class="form-control col-md-7 col-xs-12"
+                                                                   placeholder="Hairdresser Name">
+                                                        </div>
+                                                    </ul>
+                                                    <button class="search_button">search</button>
+                                                </div>
+                                            </form>
+                                        </div>
                                     </div>
-                                </form>
+                                </div>
+
+
                             </div>
                         </div>
                     </div>
@@ -109,5 +188,11 @@ $status = $response["status"];
 <script src="../plugins/parallax-js-master/parallax.min.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyCIwF204lFZg1y4kPSIhKaHEXMLYxxuMhA"></script>
 <script src="../js/custom.js"></script>
+
+<script src="../nedmin/vendors/jquery/dist/jquery.min.js"></script>
+<script src="../nedmin/vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="../nedmin/vendors/fastclick/lib/fastclick.js"></script>
+<script src="../nedmin/vendors/nprogress/nprogress.js"></script>
+<script src="../nedmin/build/js/custom.min.js"></script>
 </body>
 </html>

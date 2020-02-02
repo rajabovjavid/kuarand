@@ -100,7 +100,7 @@ $hd = $response["data"];
 
                                     <li role="presentation" class=""><a href="#tab_content4" role="tab"
                                                                         id="profile-tab2" data-toggle="tab"
-                                                                        aria-expanded="false">Reservation</a>
+                                                                        aria-expanded="false">Reserved Times</a>
                                     </li>
 
 

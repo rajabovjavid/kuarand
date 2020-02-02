@@ -56,14 +56,9 @@ $hds = $response["data"];
             <?php } ?>
         </div>
     </div>
-
-    <?php include "footer.php" ?>
-
-
 </div>
 
 <?php include "footer.php" ?>
-
 
 </div>
 
