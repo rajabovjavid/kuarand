@@ -94,12 +94,12 @@ if (isset($_SESSION["email"])) {
                                 </div>
                             <?php } ?>
                         </div>
-                        <small>
+                        <h2>
                             <?php
                             echo apcu_fetch("message");
                             apcu_delete("message")
                             ?>
-                        </small>
+                        </h2>
 
 
                         <div class="hamburger ml-auto"><i class="fa fa-bars" aria-hidden="true"></i></div>

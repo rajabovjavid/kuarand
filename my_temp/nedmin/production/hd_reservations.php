@@ -88,40 +88,19 @@ $urunsor->execute();
                                     <td><?php echo $reservation['serName'] ?></td>
                                     <td><?php echo $reservation['serPrice'] ?></td>
                                     <td>
-                                        <center><?php
-                                            $today = date("Y-m-d H:i:s");
-                                            if ($reservation['reservationDate'] > $today){ ?>
-
-                                                <button class="btn btn-success btn-xs" disabled>Active</button>
-
-                                                <!--
-
-                                                success -> yeşil
-                                                warning -> turuncu
-                                                danger -> kırmızı
-                                                default -> beyaz
-                                                primary -> mavi buton
-
-                                                btn-xs -> ufak buton
-
-                                              -->
-
-                                            <?php } else { ?>
-
-                                                <button class="btn btn-danger btn-xs" disabled>Passive</button>
-
-
-                                            <?php } ?>
-                                        </center>
-
-
+                                        <a href="../../api_routes/panel_routes/finish_reservation_route.php?res_id=<?php echo $reservation['reservationId']; ?>">
+                                            <button class="btn btn-primary btn-xs"
+                                                <?php echo ($reservation["isFinished"]==0)?"":"disabled"?>>
+                                                <?php echo ($reservation["isFinished"]==0)?"Finish":"Finished"?>
+                                            </button>
+                                        </a>
                                     </td>
-
                                     <td>
                                         <center>
                                             <a href="../../api_routes/panel_routes/delete_reservation_route.php?res_id=<?php echo $reservation['reservationId']; ?>&urunsil=ok">
                                                 <button class="btn btn-danger btn-xs">Reject</button>
-                                            </a></center>
+                                            </a>
+                                        </center>
                                     </td>
                                 </tr>
 
